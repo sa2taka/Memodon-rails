@@ -1,0 +1,24 @@
+{
+  "name": "memodon_rails",
+  "private": true,
+  "scripts": {
+    "start": "foreman start",
+    "dev-run": "bin/webpack-dev-server & foreman start"
+  },
+  "dependencies": {
+    "@rails/webpacker": "3.5",
+    "axios": "^0.18.0",
+    "vue": "^2.5.17",
+    "vue-loader": "14.2.2",
+    "vue-router": "^3.0.1",
+    "vue-template-compiler": "^2.5.17",
+    "vuex": "^3.0.1"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "2.11.2"
+  },
+  "engins": {
+    "yarn": "1.9.4",
+    "node": "10.9.0"
+  }
+}
