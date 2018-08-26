@@ -12,6 +12,7 @@
 # Indexes
 #
 #  index_users_on_instance_id  (instance_id)
+#  index_users_on_username     (username)
 #
 
 class User < ApplicationRecord
