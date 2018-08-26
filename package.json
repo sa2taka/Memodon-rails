@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "start": "foreman start",
-    "dev-run": "bin/webpack-dev-server & foreman start"
+    "dev-run": "foreman start -f Procfile.dev"
   },
   "dependencies": {
     "@rails/webpacker": "3.5",
