@@ -10,13 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_26_084036) do
+ActiveRecord::Schema.define(version: 2018_08_26_120211) do
 
   create_table "instances", force: :cascade do |t|
     t.string "url"
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "client_id"
+    t.string "client_secret"
     t.index ["url"], name: "index_instances_on_url"
   end
 

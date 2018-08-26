@@ -2,11 +2,13 @@
 #
 # Table name: instances
 #
-#  id         :integer          not null, primary key
-#  title      :string
-#  url        :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id            :integer          not null, primary key
+#  client_secret :string
+#  title         :string
+#  url           :string
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  client_id     :string
 #
 # Indexes
 #
