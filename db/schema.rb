@@ -10,6 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2018_08_26_084036) do
+
+  create_table "instances", force: :cascade do |t|
+    t.string "url"
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["url"], name: "index_instances_on_url"
+  end
+
+  create_table "media", force: :cascade do |t|
+    t.string "type"
+    t.string "url"
+    t.string "preview_url"
+    t.integer "memo_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["memo_id"], name: "index_media_on_memo_id"
+  end
+
+  create_table "memos", force: :cascade do |t|
+    t.string "text"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_memos_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "display"
+    t.integer "instance_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["instance_id"], name: "index_users_on_instance_id"
+  end
 
 end
