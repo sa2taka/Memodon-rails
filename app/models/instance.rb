@@ -16,7 +16,7 @@
 #
 
 class Instance < ApplicationRecord
-  has_many :user
+  has_many :users, dependent: :destroy
 
   accepts_nested_attributes_for :user
 

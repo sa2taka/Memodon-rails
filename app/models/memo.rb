@@ -19,7 +19,8 @@
 class Memo < ApplicationRecord
   belongs_to :user
 
-  has_many :medium
+  has_many :media, dependent: :destroy
+  has_many :tags, dependent: :destroy
 
   validates :text, presence: true
   validates :user_id, presence: true

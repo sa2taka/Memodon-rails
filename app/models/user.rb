@@ -18,7 +18,7 @@
 class User < ApplicationRecord
   belongs_to :instance
 
-  has_many :memo
+  has_many :memos, dependent: :destroy
 
   validates :username, presence: true
   validates :instance_id, presence: true
