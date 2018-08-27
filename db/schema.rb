@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_26_131759) do
+ActiveRecord::Schema.define(version: 2018_08_27_162719) do
 
   create_table "instances", force: :cascade do |t|
     t.string "url"
@@ -41,6 +41,15 @@ ActiveRecord::Schema.define(version: 2018_08_26_131759) do
     t.string "url"
     t.index ["status_id"], name: "index_memos_on_status_id"
     t.index ["user_id"], name: "index_memos_on_user_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.integer "memo_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["memo_id"], name: "index_tags_on_memo_id"
+    t.index ["name"], name: "index_tags_on_name"
   end
 
   create_table "users", force: :cascade do |t|
