@@ -1,6 +1,6 @@
 module MemodonTools
   # メモをデータベースにinsertするクラス
-  # behaviorメソッドで自動的に(未登録の)メモ(と未登録のアカウント)をinsertする
+  # crawlメソッドで自動的に(未登録の)メモ(と未登録のアカウント)をinsertする
   class MemoCrawler
     class << self
       def crawl(instance_url, username, access_token, max_id = nil)
