@@ -3,6 +3,7 @@ class LoginController < ApplicationController
   end
 
   def mastodon_login
-    flash.now[:danger] = '入力したインスタンスに接続できません'
+    flash.now['red accent-2'] = '入力したインスタンスに接続できません'
+    render 'index'
   end
 end
