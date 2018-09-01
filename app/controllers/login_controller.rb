@@ -3,7 +3,12 @@ class LoginController < ApplicationController
   end
 
   def mastodon_login
-    flash.now['red accent-2'] = '入力したインスタンスに接続できません'
-    render 'index'
+    begin
+      client_no_token = MstdnIvory::Client.new('https://mstdn-worker.com')
+      instance = client_no_token.get('/api/v1/instance')
+    rescue
+      flash.now['red accent-2'] = '入力したインスタンスに接続できません'
+      render 'index'
+    end
   end
 end
