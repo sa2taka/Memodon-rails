@@ -1,8 +1,8 @@
 import VueRouter from 'vue-router'
-import WelcomePage from './components/Welcome'
+import HomePage from './components/Home'
 
 const routes = [{
-  path: '/', component: WelcomePage,
+  path: '/', component: HomePage,
 }];
 
 export default new VueRouter({ routes })
