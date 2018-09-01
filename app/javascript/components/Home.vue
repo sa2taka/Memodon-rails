@@ -1,7 +1,7 @@
 <template>
   <div id="home">
     <div class="title-area">
-      <div id="title" class="index-title">
+      <div id="title" class="index-title ">
         <div class="index-title__x">
           <div class="index-title__y"></div>
         </div>

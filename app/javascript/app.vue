@@ -1,9 +1,7 @@
 <template>
   <div id="app">
     <header-component />
-    <div class="container">
-      <router-view />
-    </div>
+    <router-view />
     <footer-component />
   </div>
 </template>
@@ -22,7 +20,4 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  width: 85%;
-}
 </style>
