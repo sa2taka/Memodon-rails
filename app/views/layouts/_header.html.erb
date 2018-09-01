@@ -1,0 +1,31 @@
+<nav>
+  <div class="nav-wrapper">
+    <a href="/" class="brand-logo logo">
+      Memodon
+    </a>
+    <a class="sidenav-trigger" data-target="mobile-nav" href="#">
+      <i class="material-icons">menu</i>
+    </a>
+    <ul class="right hide-on-med-and-down navbar-menu">
+      <li>
+        <a href="/login">Login</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<ul id="mobile-nav" class="sidenav">
+  <li class="sidenav-top-area">
+    Menu
+  </li>
+  <li>
+    <a href="/login">Login</a>
+  </li>
+</ul>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  let elems = document.querySelectorAll('.sidenav')
+  let instances = M.Sidenav.init(elems)
+})
+</script>
