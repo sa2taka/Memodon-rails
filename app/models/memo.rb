@@ -20,10 +20,10 @@ class Memo < ApplicationRecord
   belongs_to :user
 
   has_many :media, dependent: :destroy
-  has_many :tag, through: :memo_tag
-  has_many :memo_tag
+  has_many :tags, through: :memo_tag
+  has_many :memo_tags
 
-  accepts_nested_attributes_for :group_users
+  accepts_nested_attributes_for :memo_tags
 
   validates :text, presence: true
   validates :user_id, presence: true
