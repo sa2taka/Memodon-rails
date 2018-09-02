@@ -1,8 +1,11 @@
 import VueRouter from 'vue-router'
-import WelcomePage from './components/Welcome'
+import HomePage  from './components/Home'
+import MemosPage from './components/Memos'
 
-const routes = [{
-  path: '/', component: WelcomePage,
-}];
+const mode = 'hash'
+const routes = [
+  { path: '/',      component: HomePage },
+  { path: '/memos', component: MemosPage },
+]
 
-export default new VueRouter({ routes })
+export default new VueRouter({ mode, routes })

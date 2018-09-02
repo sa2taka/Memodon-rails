@@ -1,11 +1,12 @@
 <template>
-  <div id="welcome">
-    Hogehoge!
+  <div id="memos">
+    This is Memos.
   </div>
 </template>
 
 <script>
 export default {
+  name: 'memos'
 }
 </script>
 

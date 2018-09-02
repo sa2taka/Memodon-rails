@@ -1,0 +1,14 @@
+<div class="flex-center">
+  <div class="login-card card z-depth-3 flex-center">
+    <div class="login-card__title login-card__base">
+      マストドンにログインする
+    </div>
+    <%= form_tag(controller: 'login', action: 'mastodon_login', class: 'flex-center login-card__content  login-card__base') do %>
+      <%= label_tag(:instance_url, "ログインしたいマストドンインスタンスのURLを入力してください", class: "login-card__base") %>
+      <div class="login-card__url  login-card__base">
+        <div class="login-card__url__http">https://</div><%= text_field_tag(:instance_url, '', placeholder: 'mstdn-workers.com') %>
+      </div>
+      <%= button_tag("ログイン画面へ飛ぶ", class: 'btn waves-effect waves-light login-card__button') %>
+    <% end %>
+  </div>
+</div>
