@@ -1,0 +1,2 @@
+module NavbarRedirectHelper
+end

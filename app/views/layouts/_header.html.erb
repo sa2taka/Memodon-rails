@@ -1,15 +1,11 @@
 <nav>
   <div class="nav-wrapper">
-    <a href="/" class="brand-logo logo">
-      Memodon
-    </a>
+    <div id="nav-bar-root" class="brand-logo logo" data-url='/#/'>Memodon</div>
     <a class="sidenav-trigger" data-target="mobile-nav" href="#">
       <i class="material-icons">menu</i>
     </a>
     <ul class="right hide-on-med-and-down navbar-menu">
-      <li>
-        <a href="/login">Login</a>
-      </li>
+      <%= render 'layouts/navmenu' %>
     </ul>
   </div>
 </nav>
@@ -18,9 +14,7 @@
   <li class="sidenav-top-area">
     Menu
   </li>
-  <li>
-    <a href="/login">Login</a>
-  </li>
+  <%= render 'layouts/navmenu' %>
 </ul>
 
 <script>
@@ -28,4 +22,15 @@ document.addEventListener('DOMContentLoaded', () => {
   let elems = document.querySelectorAll('.sidenav')
   let instances = M.Sidenav.init(elems)
 })
+
+function redirect () {
+  console.log(this.getAttribute('data-url'))
+  location.href = this.getAttribute('data-url')
+}
+
+const navBarRoot  = document.getElementById('nav-bar-root')
+const navBarMemos = document.getElementById('nav-bar-memos')
+navBarRoot.addEventListener('click', redirect)
+navBarMemos.addEventListener('click', redirect)
+
 </script>

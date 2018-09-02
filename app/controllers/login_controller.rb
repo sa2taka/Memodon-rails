@@ -2,6 +2,11 @@ class LoginController < ApplicationController
   def index
   end
 
+  def logout
+    session[:user_id] = nil
+    redirect_to root_path
+  end
+
   def mastodon_login
     begin
       url = "https://#{params[:instance_url]}"

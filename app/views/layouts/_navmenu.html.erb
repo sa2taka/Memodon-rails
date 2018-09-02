@@ -1,0 +1,12 @@
+<% if logged_in? %>
+<li>
+  <%= link_to 'Logout', :logout, method: :post %>
+</li>
+<li>
+  <div id="nav-bar-memos" data-url='/#/memos'>Memos</div>
+</li>
+<% else %>
+<li>
+  <%= link_to 'Login', :login %>
+</li>
+<% end %>
