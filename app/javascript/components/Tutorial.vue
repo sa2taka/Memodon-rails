@@ -15,6 +15,21 @@
         <router-link to="/memos">
           <div class="btn waves-light btn-large to-memo-button">今すぐメモ一覧へ</div>
         </router-link>
+        <transition name="arrow-back">
+          <div class="arrow-area arrow-area__back" v-if="carouselInstance.center !== 0"  @click="carouselInstance.prev()">
+            <div class="arrow-area__base arrow-area__base__back green darken-1">
+              <i class="medium material-icons arrow">arrow_back</i>
+            </div>
+          </div>
+        </transition>
+
+        <transition name="arrow-next">
+          <div class="arrow-area arrow-area__next" v-if="carouselInstance.center !== carouselElmsNum - 1" @click="carouselInstance.next()">
+            <div class="arrow-area__base arrow-area__base__next green darken-1">
+              <i class="medium material-icons arrow">arrow_forward</i>
+            </div>
+          </div>
+        </transition>
       </div>
     </div>
   </div>
@@ -30,7 +45,8 @@ export default {
     return {
       // Tutorialの並び順と名前
       carouselElms: [],
-      carouselInstance: Object()
+      carouselInstance: Object(),
+      carouselElmsNum: 2
     }
   },
   mounted () {
@@ -78,11 +94,6 @@ export default {
   height: 100%;
 }
 
-.arrow {
-  width: 48px;
-  transition: all .5s ease;
-}
-
 .row-center {
   display: flex;
   height: 100%;
@@ -126,14 +137,75 @@ export default {
 .to-memo-button {
   position: absolute;
   bottom: 10%;
-  transform: translateX(-90px);
+}
+
+.arrow-area {
+  position: fixed;
+  color: white;
+  width: 30%;
+  height: 100%;
+  transition: all .5s ease;
+}
+
+.arrow-area__back {
+  left: 0;
+  transform: translateX(-22%);
+}
+
+.arrow-area__back:hover {
+  left: 0;
+  transform: translateX(-10%);
+}
+
+.arrow-area__next {
+  right: 0;
+  transform: translateX(22%);
+}
+
+.arrow-area__next:hover {
+  right: 0;
+  transform: translateX(10%);
+}
+
+
+.arrow {
+  position: relative;
+  top: 45%;
+}
+
+.arrow-area__base {
+  position: absolute;
+  height: 100%;
+  width: 60%;
+}
+
+.arrow-area__base__back{
+  left: 0;
+}
+
+.arrow-area__base__next {
+  right: 0;
 }
 
 .base-enter-active, .base-leave-active {
   transition: opacity 1.0s;
 }
-.base-enter, .base-leave-to /* .fade-leave-active below version 2.1.8 */ {
+.base-enter, .base-leave-to {
   opacity: 0;
+}
+
+.arrow-back-enter, .arrow-back-enter-active{
+  transition: all .5s ease-out;
+}
+.arrow-back-enter, .arrow-back-leave-to, .arrow-back-enter:hover, .arrow-back-leave-to:hover {
+  transform: translateX(-100%)
+}
+
+.arrow-next-enter, .arrow-next-enter-active {
+  transition: all .5s ease-out;
+}
+.arrow-next-enter, .arrow-next-leave-to, .arrow-next-enter:hover, .arrow-next-leave-to:hover {
+  transform: translateX(100%)
 }
 
 </style>
