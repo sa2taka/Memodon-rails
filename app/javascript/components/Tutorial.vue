@@ -13,7 +13,7 @@
           </transition>
         </div>
         <router-link to="/memos">
-          <a class="btn waves-light btn-large to-memo-button">今すぐメモ一覧へ</a>
+          <div class="btn waves-light btn-large to-memo-button">今すぐメモ一覧へ</div>
         </router-link>
       </div>
     </div>
@@ -126,7 +126,7 @@ export default {
 .to-memo-button {
   position: absolute;
   bottom: 10%;
-  text-align: center;
+  transform: translateX(-90px);
 }
 
 .base-enter-active, .base-leave-active {
