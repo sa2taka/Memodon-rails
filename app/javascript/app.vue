@@ -7,7 +7,18 @@
 <script>
 
 export default {
-  name: 'App'
+  name: 'App',
+  data () {
+    return {
+      foundationUrl: ''
+    }
+  },
+  mounted() {
+    this.foundationUrl = location.href.match(/http:\/\/.*?\/#\//gi)[0]
+    window.addEventListener('popstate', (e) =>  {
+      this.$router.push(location.href.replace(this.foundationUrl, ''))
+    })
+  }
 }
 </script>
 

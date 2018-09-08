@@ -12,6 +12,9 @@
             <base-memo class="tutorial-slide__content full-screen" href="#two!" v-if="isCenter(1)"></base-memo>
           </transition>
         </div>
+        <router-link to="/memos">
+          <a class="btn waves-light btn-large to-memo-button">今すぐメモ一覧へ</a>
+        </router-link>
       </div>
     </div>
   </div>
@@ -118,6 +121,12 @@ export default {
 
 .clear {
   opacity: 0;
+}
+
+.to-memo-button {
+  position: absolute;
+  bottom: 10%;
+  text-align: center;
 }
 
 .base-enter-active, .base-leave-active {

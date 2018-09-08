@@ -24,13 +24,15 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 function redirect () {
-  console.log(this.getAttribute('data-url'))
   location.href = this.getAttribute('data-url')
 }
 
-const navBarRoot  = document.getElementById('nav-bar-root')
-const navBarMemos = document.getElementById('nav-bar-memos')
-navBarRoot.addEventListener('click', redirect)
-navBarMemos.addEventListener('click', redirect)
-
+// navBarRootが定義されていたらMemosも定義されている
+if (typeof navBarRoot === 'undefined') {
+  const navBarRoot  = document.getElementById('nav-bar-root')
+  const navBarMemos = document.getElementsByClassName('nav-bar-memos')
+  navBarRoot.addEventListener('click', redirect)
+  navBarMemos[0].addEventListener('click', redirect)
+  navBarMemos[1].addEventListener('click', redirect)
+}
 </script>
