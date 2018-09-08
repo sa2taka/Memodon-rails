@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   get 'callback/oauth'
 
+  post 'memo/crawl'
+
   namespace :api do
   end
 

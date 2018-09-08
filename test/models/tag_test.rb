@@ -9,7 +9,7 @@
 #
 # Indexes
 #
-#  index_tags_on_name  (name)
+#  index_tags_on_name  (name) UNIQUE
 #
 
 require 'test_helper'

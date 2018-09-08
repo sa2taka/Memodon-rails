@@ -9,10 +9,12 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  instance_id :integer
+#  user_id     :integer
 #
 # Indexes
 #
 #  index_users_on_instance_id  (instance_id)
+#  index_users_on_user_id      (user_id)
 #  index_users_on_username     (username)
 #
 
