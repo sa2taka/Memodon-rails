@@ -1,6 +1,11 @@
 <template>
   <div id="base_memo">
-    Tutorial Memo
+    <div class="tutorial-frame pink lighten-1">
+      <div class="tutorial-title">
+        Memodonを開いてメモを確認しよう!!
+      </div>
+    </div>
+  </div>
   </div>
 </template>
 
@@ -11,4 +16,5 @@ export default {
 </script>
 
 <style scoped>
+
 </style>
