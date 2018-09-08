@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_08_132304) do
+ActiveRecord::Schema.define(version: 2018_09_08_135844) do
 
   create_table "instances", force: :cascade do |t|
     t.string "url"
@@ -68,7 +68,9 @@ ActiveRecord::Schema.define(version: 2018_09_08_132304) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "is_first", default: true, null: false
+    t.integer "user_id"
     t.index ["instance_id"], name: "index_users_on_instance_id"
+    t.index ["user_id"], name: "index_users_on_user_id"
     t.index ["username"], name: "index_users_on_username"
   end
 
