@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_08_125338) do
+ActiveRecord::Schema.define(version: 2018_09_08_132304) do
 
   create_table "instances", force: :cascade do |t|
     t.string "url"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 2018_09_08_125338) do
     t.datetime "updated_at", null: false
     t.string "client_id"
     t.string "client_secret"
+    t.boolean "is_crawling", default: false, null: false
+    t.datetime "last_crawl"
     t.index ["url"], name: "index_instances_on_url"
   end
 
