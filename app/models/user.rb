@@ -4,6 +4,7 @@
 #
 #  id          :integer          not null, primary key
 #  display     :string
+#  is_first    :boolean          default(TRUE), not null
 #  username    :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null

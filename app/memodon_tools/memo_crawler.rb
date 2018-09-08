@@ -24,11 +24,12 @@ class MemoCrawler
     end
 
     def insert_account(account)
-      url = account.url.match(/https:\/\/(.+?)\//)[1]
-      Instance.find_by(url: url).user.find_or_create_by(id: account['id']) do |u|
+      url = account.url.match(/(https:\/\/.+?)\//)[1]
+      Instance.find_by(url: url).users.find_or_create_by(id: account['id']) do |u|
         u.username = account.username
         u.display = account.display_name
       end
+      User.find(account['id'])
     end
 
     def insert_memo(status)

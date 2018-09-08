@@ -1,13 +1,33 @@
 class CallbackController < ApplicationController
   def oauth
-    code = params['code']
-    client = MstdnIvory::Client.new(session[:instance_url])
-    id, secret = InstanceRegister.client_info(session[:instance_url])
-    client.get_access_token(id, secret, code, InstanceRegister.redirect_uri)
-    id = client.get('/api/v1/accounts/verify_credentials').id
-    session[:user_id] = id.to_i
+    instance_url = session[:instance_url]
+    account = save_id_to_session(params['code'], instance_url)
+    user = create_user(account)
+
     # /#/はvueがhashモードで動いているときに必要なもの
     # hisotryモードでは正常に動作しなかったので当面はこれ
-    redirect_to '/#/memos'
+    if user.is_first
+      user.update(is_first: false)
+      user.is_first
+      redirect_to '/#/tutorial'
+    else
+      redirect_to '/#/memos'
+    end
+
+  end
+
+  private
+
+  def save_id_to_session(code, instance_url)
+    client = MstdnIvory::Client.new(instance_url)
+    id, secret = InstanceRegister.client_info(instance_url)
+    client.get_access_token(id, secret, code, InstanceRegister.redirect_uri)
+    account = client.get('/api/v1/accounts/verify_credentials')
+    session[:user_id] = account.id.to_i
+    account
+  end
+
+  def create_user(account)
+    MemoCrawler.insert_account(account)
   end
 end
