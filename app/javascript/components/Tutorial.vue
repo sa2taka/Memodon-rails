@@ -137,6 +137,7 @@ export default {
 .to-memo-button {
   position: absolute;
   bottom: 10%;
+  transform: translateX(-90px);
 }
 
 .arrow-area {
