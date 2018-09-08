@@ -28,6 +28,6 @@ class CallbackController < ApplicationController
   end
 
   def create_user(account)
-    MemoCrawler.insert_account(account)
+    DBRegister.insert_account(account)
   end
 end
