@@ -11,7 +11,6 @@ class MemoCrawler
       # 過去のtootをクロールするための処理
       if timeline.length >= 40
         max_id = timeline[-1].id
-        p max_id
         sleep(1.5)
         crawl(instance_url, user_id, max_id, latest_id)
       end
