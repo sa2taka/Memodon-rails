@@ -1,16 +1,16 @@
 class Api::MemosController < ApplicationController
   DEFAULT_PAGE_SIZE = 100
   def index
-    render json: create_return_value
+    render json: login_error if session[:user_id].nil?
+    render json: search_user, each_serializer: MemosSerializer
   end
 
   private
 
-  def create_return_value
+  def search_user
     page    = params[:page] || 1
     size    = params[:size] || DEFAULT_PAGE_SIZE
     user_id = session[:user_id]
-    return login_error if user_id.nil?
     user_memos(user_id, page, size)
   end
 
@@ -19,6 +19,11 @@ class Api::MemosController < ApplicationController
   end
 
   def user_memos(user_id, page, size)
-    User.find_by(user_id: user_id).memos.page(page).per(size)
+    User
+      .find_by(user_id: user_id)
+      .memos
+      .page(page)
+      .per(size)
+      .order('memos.id')
   end
 end

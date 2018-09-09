@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_08_135844) do
+ActiveRecord::Schema.define(version: 2018_09_09_154807) do
 
   create_table "instances", force: :cascade do |t|
     t.string "url"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2018_09_08_135844) do
   end
 
   create_table "media", force: :cascade do |t|
-    t.string "type"
+    t.string "media_type"
     t.string "url"
     t.string "preview_url"
     t.integer "memo_id"

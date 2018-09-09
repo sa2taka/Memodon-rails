@@ -3,8 +3,8 @@
 # Table name: media
 #
 #  id          :integer          not null, primary key
+#  media_type  :string
 #  preview_url :string
-#  type        :string
 #  url         :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
