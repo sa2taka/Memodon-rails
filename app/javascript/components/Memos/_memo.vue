@@ -7,7 +7,7 @@
         </div>
         <div class="row actions">
           <div class="col s6 center go-to-toot">
-            <a :href="https://mstdn-workers.com/web/statuses/${memo.id}" class="card-link">
+            <a :href="`https://mstdn-workers.com/web/statuses/${memo.id}`" class="card-link">
               <i class="material-icons memo-link-icon">subdirectory_arrow_right</i>
             </a>
           </div>
@@ -36,6 +36,9 @@ export default {
     }
   },
   methods: {
+    deleteMemo: function (id) {
+      
+    }
   }
 }
 </script>
