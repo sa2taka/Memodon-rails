@@ -4,6 +4,8 @@
 #
 #  id            :integer          not null, primary key
 #  client_secret :string
+#  is_crawling   :boolean          default(FALSE), not null
+#  last_crawl    :datetime
 #  title         :string
 #  url           :string
 #  created_at    :datetime         not null

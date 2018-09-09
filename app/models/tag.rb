@@ -9,12 +9,12 @@
 #
 # Indexes
 #
-#  index_tags_on_name  (name)
+#  index_tags_on_name  (name) UNIQUE
 #
 
 class Tag < ApplicationRecord
   has_many :memo, through: :memo_tag
-  has_many :memo_tag
+  has_many :memo_tags
 
   validates :name, presence: true
 end

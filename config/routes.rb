@@ -7,7 +7,12 @@ Rails.application.routes.draw do
 
   get 'callback/oauth'
 
+  post 'memo/crawl'
+
   namespace :api do
+    get 'memos', to: 'memos#index'
+    get 'users', to: 'users#index'
+    get 'current_user', to: 'users#current_user'
   end
 
   get '*path', to: redirect('/')

@@ -8,7 +8,6 @@ class CallbackController < ApplicationController
     # hisotryモードでは正常に動作しなかったので当面はこれ
     if user.is_first
       user.update(is_first: false)
-      user.is_first
       redirect_to '/#/tutorial'
     else
       redirect_to '/#/memos'
@@ -28,6 +27,6 @@ class CallbackController < ApplicationController
   end
 
   def create_user(account)
-    MemoCrawler.insert_account(account)
+    DBRegister.insert_account(account)
   end
 end
