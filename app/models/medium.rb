@@ -20,6 +20,6 @@ class Medium < ApplicationRecord
 
   validates :url, presence: true
   validates :preview_url, presence: true
-  validates :type, presence: true
+  validates :media_type, presence: true
   validates :memo_id, presence: true
 end

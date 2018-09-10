@@ -20,10 +20,10 @@ class Api::MemosController < ApplicationController
 
   def user_memos(user_id, page, size)
     User
-      .find_by(user_id: user_id)
+      .find(user_id)
       .memos
       .page(page)
       .per(size)
-      .order('memos.id desc')
+      .order('memos.status_id desc')
   end
 end

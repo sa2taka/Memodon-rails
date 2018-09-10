@@ -5,7 +5,7 @@ class Api::UsersController < ApplicationController
   end
 
   def current_user
-    render json: User.find_by(user_id: session[:user_id])
+    render json: User.find(session[:user_id])
   end
 
   private

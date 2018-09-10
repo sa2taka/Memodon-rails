@@ -1,5 +1,5 @@
 class UsersSerializer < ActiveModel::Serializer
-  attributes :user_id, :username, :display
+  attributes :account_id, :username, :display
 
   has_many :memos
 end
