@@ -24,6 +24,6 @@ class Api::MemosController < ApplicationController
       .memos
       .page(page)
       .per(size)
-      .order('memos.id')
+      .order('memos.id desc')
   end
 end
