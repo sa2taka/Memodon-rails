@@ -1,6 +1,6 @@
 <template>
   <div id="media">
-    <medium :medium="media[0]" :width="240"></medium>
+    <medium :medium="media[0]" :img_style="'left: auto; top: auto; right: auto; bottom: auto; width: 100%; height: 100%;'"></medium>
   </div>
 </template>
 

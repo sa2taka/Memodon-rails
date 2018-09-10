@@ -1,6 +1,8 @@
 <template>
   <div id="medium">
-    <img class="materialboxed" :width="width" :src="medium.url">
+    <div :style="img_style">
+      <img class="materialboxed thumbnail z-depth-3" :src="medium.url">
+    </div>
   </div>
 </template>
 
@@ -17,17 +19,15 @@ export default {
       type: Object,
       required: true
     },
-    width: {
-      type: Number,
+    img_style: {
+      type: String,
       required: true
     }
   },
   mounted () {
     const elems = document.querySelectorAll('.materialboxed')
     const options = {}
-    console.log(this.medium)
-    this.instances = M.Materialbox.init(elems, options)
-    console.log(this.instances)
+    this.instance = M.Materialbox.init(elems, options)[0]
   },
   methods: {
   }
@@ -35,4 +35,18 @@ export default {
 </script>
 
 <style scoped>
+#medium {
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+.thumbnail {
+  max-width: 240px;
+  max-height: 240px;
+  width: auto;
+  height: auto;
+}
 </style>
