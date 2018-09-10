@@ -32,7 +32,7 @@ class DBRegister
         memo.media.create do |m|
           m.url = medium['url']
           m.preview_url = medium['preview_url']
-          m.type = medium['type']
+          m.media_type = medium['type']
         end
       end
 
