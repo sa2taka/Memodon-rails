@@ -2,8 +2,9 @@
   <div id="memo" class="col s10 offset-s1">
     <div class="card orange lighten-3">
       <div class="card-content black-text">
-        <div class="status-content" v-html="memo.text">
-
+        <div class="status-content">
+          <div  v-html="memo.text"></div>
+          <media :media="memo.media" v-if="memo.media.length != 0"></media>
         </div>
         <div class="row actions">
           <div class="col s6 center action-column">
@@ -27,6 +28,7 @@
 </template>
 
 <script>
+import Media from './_media.vue'
 export default {
   name: 'memo',
   data () {
@@ -43,6 +45,9 @@ export default {
     deleteMemo: function (id) {
 
     }
+  },
+  components: {
+    Media
   }
 }
 </script>
