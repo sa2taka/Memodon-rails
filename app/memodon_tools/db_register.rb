@@ -22,7 +22,6 @@ class DBRegister
       content = status.content
       content = status.spoiler_text + '</br>' + content unless status.spoiler_text.empty?
       memo = user.memos.create do |m|
-        m.id = status.id.to_i
         m.status_id = status.id.to_i
         m.text = content
         m.url = status.url
