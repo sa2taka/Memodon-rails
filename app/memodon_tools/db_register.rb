@@ -40,6 +40,7 @@ class DBRegister
         tag = Tag.find_or_create_by(name: tag['name'])
         memo.tags << tag
       end
+      memo
     end
   end
 end
