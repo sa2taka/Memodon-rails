@@ -3,7 +3,7 @@
 class MemoCrawler
   class << self
     def crawl(instance_url, user_id, max_id = nil, latest_id = nil)
-      latest_id ||= Memos.order('status_id desc').first&.status_id || 1
+      latest_id ||= Memo.all.order('status_id desc').first&.status_id || 1
       client = MstdnIvory::Client.new(instance_url)
       timeline = client.get('/api/v1/timelines/tag/メモ', { local: 'true', since_id: latest_id, max_id: max_id, limit: 40 })
       DBRegister.insert_database(timeline)
