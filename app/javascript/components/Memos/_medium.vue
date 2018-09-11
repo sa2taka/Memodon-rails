@@ -1,8 +1,6 @@
 <template>
   <div id="medium">
-    <div :style="img_style">
-      <img class="materialboxed thumbnail z-depth-3" :src="medium.url">
-    </div>
+    <img class="materialboxed thumbnail z-depth-3" :src="medium.url">
   </div>
 </template>
 
@@ -17,10 +15,6 @@ export default {
   props: {
     medium: {
       type: Object,
-      required: true
-    },
-    img_style: {
-      type: String,
       required: true
     }
   },
@@ -38,15 +32,16 @@ export default {
 #medium {
   box-sizing: border-box;
   position: relative;
-  width: 100%;
-  overflow: hidden;
-  margin-top: 8px;
+  margin: 4px 6px;
 }
 
 .thumbnail {
-  max-width: 240px;
-  max-height: 240px;
+  max-width: 168px;
+  max-height: 168px;
   width: auto;
   height: auto;
+  background-color: white;
+  padding: 6px;
 }
+
 </style>

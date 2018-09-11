@@ -1,6 +1,6 @@
 <template>
   <div id="media">
-    <medium :medium="media[0]" :img_style="'left: auto; top: auto; right: auto; bottom: auto; width: 100%; height: 100%;'"></medium>
+    <medium :medium="medium" v-for="medium in media"></medium>
   </div>
 </template>
 
@@ -32,5 +32,7 @@ export default {
 <style scoped>
 #media {
   margin: 1rem;
+  display: flex;
+  flex-wrap: wrap;
 }
 </style>
