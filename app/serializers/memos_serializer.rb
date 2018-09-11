@@ -1,5 +1,5 @@
 class MemosSerializer < ActiveModel::Serializer
-  attributes :id, :text, :url
+  attributes :id, :status_id, :text, :url
 
   belongs_to :user, serializer: UsersSerializer
 

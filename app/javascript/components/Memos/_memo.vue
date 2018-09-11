@@ -1,15 +1,15 @@
 <template>
-  <div id="memo" class="col s10 offset-s1">
+  <div class="col s10 offset-s1">
     <div class="card orange lighten-3">
       <div class="card-content black-text">
         <div class="status-content">
           <div  v-html="memo.text"></div>
-          <media :media="memo.media" v-if="memo.media.length != 0"></media>
+          <media :media="memo.media" :memo_id="memo.id" v-if="memo.media.length != 0"></media>
         </div>
         <div class="row actions">
           <div class="col s6 center action-column">
             <div class="go-to-toot">
-              <a :href="`https://mstdn-workers.com/web/statuses/${memo.id}`" class="card-link">
+              <a :href="memo.url" class="card-link">
                 <i class="material-icons memo-link-icon ">subdirectory_arrow_right</i>
               </a>
             </div>

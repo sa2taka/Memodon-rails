@@ -1,5 +1,5 @@
 <template>
-  <div id="memos">
+  <div id="memos" >
     This is Memos.
     <a class="btn" @click="_test_crawl">クロール</a>
     <memo :memo="memo" v-for="memo in memos" :key="memo.id"></memo>
@@ -21,6 +21,8 @@ export default {
   },
   mounted () {
     this.get_memos()
+
+    document.addEventListener('resize', this.onResize)
   },
   methods: {
     _test_crawl: function () {
@@ -40,6 +42,10 @@ export default {
           self.memos = response.data
           self.$forceUpdate()
         })
+    },
+    onResize: function () {
+      const width  = window.innerWidth
+      const height = window.innerHeight
     }
   },
   components: {

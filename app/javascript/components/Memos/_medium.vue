@@ -1,5 +1,5 @@
 <template>
-  <div id="medium">
+  <div class="medium">
     <img class="materialboxed thumbnail z-depth-3" :src="medium.url">
   </div>
 </template>
@@ -29,10 +29,11 @@ export default {
 </script>
 
 <style scoped>
-#medium {
+.medium {
+  position: absolute;
   box-sizing: border-box;
-  position: relative;
   margin: 4px 6px;
+  min-height: 168px;
 }
 
 .thumbnail {
