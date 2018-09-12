@@ -1,6 +1,6 @@
 <template>
   <div class="medium">
-    <img class="materialboxed thumbnail z-depth-3" :src="medium.url">
+    <img class="thumbnail z-depth-3" :src="medium.url" @click="setImageUrl">
   </div>
 </template>
 
@@ -24,6 +24,9 @@ export default {
     this.instance = M.Materialbox.init(elems, options)[0]
   },
   methods: {
+    setImageUrl: function () {
+      this.$store.commit('setImageUrl', this.medium.url)
+    }
   }
 }
 </script>

@@ -24,7 +24,6 @@ export default {
     }
   },
   mounted () {
-    console.log('#media-' + this.memo_id)
     new MiniMasonry({
       container: '#media-' + this.memo_id,
       baseWidth: 167,
