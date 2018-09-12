@@ -45,4 +45,11 @@ export default {
   max-width: 80%;
   max-height: 80%;
 }
+
+.modal-enter-active, .modal-leave-active {
+  transition: opacity .2s ease;
+}
+.modal-enter, .modal-leave-to {
+  opacity: 0;
+}
 </style>

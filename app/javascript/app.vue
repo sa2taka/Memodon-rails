@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <router-view />
-    <image-modal v-if="isImageModalActive" :imageUrl="imageUrl"></image-modal>
+    <transition name="modal">
+      <image-modal v-if="isImageModalActive" :imageUrl="imageUrl"></image-modal>
+    </transition>
   </div>
 </template>
 
@@ -39,4 +41,5 @@ export default {
 </script>
 
 <style scoped>
+
 </style>
