@@ -2,8 +2,8 @@
   <div id="memos" >
     <div class="row">
       <a class="btn col offset-s1 s2" @click="_test_crawl">クロール</a>
-      <div class="switch col offset-s5 s3 ">
-        <label>
+      <div class="switch col offset-s3 s5">
+        <label class="column-switch">
           単独カラム
           <input type="checkbox" checked @click="toggleMulctiColumn">
           <span class="lever"></span>
@@ -68,4 +68,9 @@ export default {
 </script>
 
 <style scoped>
+.column-switch {
+  font-size: 22px;
+  font-weight: 600;
+  color: rgb(51, 51, 51);
+}
 </style>

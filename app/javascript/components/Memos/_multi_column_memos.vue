@@ -27,7 +27,7 @@ export default {
       gutter: 20,
       baseWidth: 400
     })
-    this.setExecuteLayout(80)
+    this.setExecuteLayout(33)
   },
   updated () {
     this.masonry = new MiniMasonry({
@@ -37,15 +37,7 @@ export default {
       baseWidth: 400
     })
 
-    this.masonry.layout()
-
-    // Ctrl + Shift + Rでリロードするとレイアウトが崩れるためlayoutを再実行する
-    // _media.vueで再実行したあとに行う必要があるため、相手の秒数よりあとにしなければならない
-    this.setExecuteLayout(100)
-
-    window.addEventListener('resize', () => {
-      this.setExecuteLayout(150)
-    })
+    this.setExecuteLayout(33)
   },
   methods: {
     setExecuteLayout: function (delay) {

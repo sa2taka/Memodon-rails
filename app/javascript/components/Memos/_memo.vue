@@ -4,7 +4,7 @@
       <div class="card-content black-text">
         <div class="status-content">
           <div  v-html="memo.text"></div>
-          <media :media="memo.media" :memo_id="memo.id" v-if="memo.media.length != 0"></media>
+          <media :media="memo.media" :isOneColumn="isOneColumn" :memo_id="memo.id" v-if="memo.media.length != 0"></media>
         </div>
         <div class="row actions">
           <div class="col s6 center action-column">
@@ -39,6 +39,10 @@ export default {
     memo: {
       type: Object,
       required: true
+    },
+    isOneColumn: {
+      type: Boolean,
+      default: false
     }
   },
   methods: {
