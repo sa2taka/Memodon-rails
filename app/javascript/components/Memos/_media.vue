@@ -10,7 +10,7 @@ export default {
   name: 'media',
   data () {
     return {
-      instance: Object
+      masonry: Object
     }
   },
   props: {
@@ -24,13 +24,26 @@ export default {
     }
   },
   mounted () {
-    new MiniMasonry({
+    this.masonry = new MiniMasonry({
       container: '#media-' + this.memo_id,
       baseWidth: 167,
       minify: false
     })
+
+    // Ctrl + Shift + Rでリロードするとレイアウトが崩れるためlayoutを再実行する
+    // Memos.vueで再実行した前に行う必要があるため、それより早い秒数で行う
+    this.setExecuteLayout(66)
+
+    window.addEventListener('resize', () => {
+      this.setExecuteLayout(100)
+    })
   },
   methods: {
+    setExecuteLayout: function (delay) {
+      window.setTimeout( () => {
+        this.masonry.layout()
+      }, delay)
+    }
   },
   components: {
     Medium

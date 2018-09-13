@@ -1,5 +1,5 @@
 <template>
-  <div class="col s10 offset-s1">
+  <div class="memo">
     <div class="card orange lighten-3">
       <div class="card-content black-text">
         <div class="status-content">
@@ -53,6 +53,10 @@ export default {
 </script>
 
 <style scoped>
+.memo {
+  position: absolute;
+}
+
 .status-content {
   font-weight: 400;
   font-size: 14px;
