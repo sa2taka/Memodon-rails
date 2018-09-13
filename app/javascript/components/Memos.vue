@@ -1,16 +1,27 @@
 <template>
   <div id="memos" >
-    This is Memos.
-    <a class="btn" @click="_test_crawl">クロール</a>
-    <a class="btn" @click="isTwoColumn = !isTwoColumn">カラムをトグル</a>
-    <div class="memos column-base">
-        <memo :memo="memo" v-for="memo in memos" :key="memo.id"></memo>
+    <div class="row">
+      <a class="btn col offset-s1 s2" @click="_test_crawl">クロール</a>
+      <div class="switch col offset-s5 s3 ">
+        <label>
+          単独カラム
+          <input type="checkbox" checked @click="toggleMulctiColumn">
+          <span class="lever"></span>
+          複数カラム
+        </label>
+      </div>
     </div>
+
+    <transition name="memos">
+      <multi-column-memos :memos="memos" v-if="isMultiColumn"></multi-column-memos>
+      <one-column-memos :memos="memos" v-else></one-column-memos>
+    </transition>
   </div>
 </template>
 
 <script>
-import Memo from './Memos/_memo.vue'
+import MultiColumnMemos from './Memos/_multi_column_memos'
+import OneColumnMemos from './Memos/_one_column_memos'
 import axios from 'axios'
 
 export default {
@@ -20,34 +31,11 @@ export default {
       memos: [],
       page: 1,
       size: 50,
-      isTwoColumn: true,
-      masonry: Object,
-      isFirstUpdated: true,
-      masonry: Object
+      isMultiColumn: true
     }
   },
   mounted () {
     this.get_memos()
-
-    window.addEventListener('resize', this.onResize)
-  },
-  updated () {
-    this.masonry = new MiniMasonry({
-      container: '.memos',
-      minify: false,
-      gutter: 20,
-      baseWidth: 400
-    })
-
-    this.masonry.layout()
-
-    // Ctrl + Shift + Rでリロードするとレイアウトが崩れるためlayoutを再実行する
-    // _media.vueで再実行したあとに行う必要があるため、相手の秒数よりあとにしなければならない
-    this.setExecuteLayout(100)
-
-    window.addEventListener('resize', () => {
-      this.setExecuteLayout(150)
-    })
   },
   methods: {
     _test_crawl: function () {
@@ -68,26 +56,16 @@ export default {
         self.$forceUpdate()
       })
     },
-    onResize: function () {
-      const width  = window.innerWidth
-      const height = window.innerHeight
-    },
-    setExecuteLayout: function (delay) {
-      window.setTimeout( () => {
-        this.masonry.layout()
-      }, delay)
+    toggleMulctiColumn: function () {
+      this.isMultiColumn = !this.isMultiColumn
     }
   },
   components: {
-    Memo
+    MultiColumnMemos,
+    OneColumnMemos
   }
 }
 </script>
 
 <style scoped>
-.column-base {
-  width: 100%;
-  position: relative;
-}
-
 </style>

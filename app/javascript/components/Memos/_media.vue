@@ -1,6 +1,6 @@
 <template>
   <div :id="'media-' + memo_id" class="media" :style="{ 'max-width': `${200 * media.length}px` }">
-    <medium :medium="medium" v-for="medium in media"></medium>
+    <medium :medium="medium" v-for="medium in media" :key="medium.id"></medium>
   </div>
 </template>
 

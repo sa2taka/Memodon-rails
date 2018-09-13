@@ -54,7 +54,6 @@ export default {
 
 <style scoped>
 .memo {
-  position: absolute;
 }
 
 .status-content {
