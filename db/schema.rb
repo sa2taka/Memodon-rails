@@ -68,9 +68,9 @@ ActiveRecord::Schema.define(version: 2018_09_09_154807) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "is_first", default: true, null: false
-    t.integer "user_id"
+    t.integer "account_id"
+    t.index ["account_id"], name: "index_users_on_account_id"
     t.index ["instance_id"], name: "index_users_on_instance_id"
-    t.index ["user_id"], name: "index_users_on_user_id"
     t.index ["username"], name: "index_users_on_username"
   end
 
