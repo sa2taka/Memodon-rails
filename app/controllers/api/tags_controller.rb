@@ -2,7 +2,7 @@ class Api::TagsController < ApplicationController
   before_action :require_login
 
   def index
-    render json: user_tags, each_serializer: TagsNumSerializer
+    render json: user_tags, each_serializer: TagsWithTootSerializer
   end
 
   def recent
@@ -10,7 +10,7 @@ class Api::TagsController < ApplicationController
   end
 
   def most
-    render json: most_tags, each_serializer: TagsNumSerializer
+    render json: most_tags, each_serializer: TagsWithNumSerializer
   end
 
   private
@@ -39,11 +39,11 @@ class Api::TagsController < ApplicationController
   end
 
   def search_user_tags(user_id)
-    Memo
-      .joins(:tags)
-      .select('tags.name, count(*) as count')
-      .where(user_id: user_id)
-      .group('tags.name')
+    Tag
+      .joins(:memos)
+      .select('tags.name, memos.text, count(*) as count')
+      .where(['memos.user_id = ?', user_id])
+      .group('tags.name, memos.text')
       .order('tags.name')
       .uniq
   end
