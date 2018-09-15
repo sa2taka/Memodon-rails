@@ -14,7 +14,7 @@ class Api::MemosController < ApplicationController
   end
 
   def login_error
-    { error: 'Invalid Login!!' }
+    LOGIN_ERROR
   end
 
   def find_user_memos(user_id, page, size)
