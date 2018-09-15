@@ -1,24 +1,23 @@
 class Api::MemosController < ApplicationController
-  DEFAULT_PAGE_SIZE = 100
   def index
     render json: login_error if session[:user_id].nil?
-    render json: search_user, each_serializer: MemosSerializer
+    render json: user_memos, each_serializer: MemosSerializer
   end
 
   private
 
-  def search_user
+  def user_memos
     page    = params[:page] || 1
-    size    = params[:size] || DEFAULT_PAGE_SIZE
+    size    = params[:size] || Constants::DEFAULT_PAGE_SIZE
     user_id = session[:user_id]
-    user_memos(user_id, page, size)
+    find_user_memos(user_id, page, size)
   end
 
   def login_error
     { error: 'Invalid Login!!' }
   end
 
-  def user_memos(user_id, page, size)
+  def find_user_memos(user_id, page, size)
     User
       .find(user_id)
       .memos
