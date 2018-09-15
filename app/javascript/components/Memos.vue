@@ -20,8 +20,8 @@
 </template>
 
 <script>
-import MultiColumnMemos from './Memos/_multi_column_memos'
-import OneColumnMemos from './Memos/_one_column_memos'
+import MultiColumnMemos from './Memos/_multi_column_memos.vue'
+import OneColumnMemos from './Memos/_one_column_memos.vue'
 import axios from 'axios'
 
 export default {
@@ -46,8 +46,9 @@ export default {
     },
     get_memos: function () {
       const params = {
-        page: this.page,
-        size: this.size
+        page:     this.page,
+        size:     this.size,
+        tag_name: this.$route.params.tagname
       }
       const self = this
       axios.get('/api/memos', { params })
@@ -58,6 +59,11 @@ export default {
     },
     toggleMulctiColumn: function () {
       this.isMultiColumn = !this.isMultiColumn
+    }
+  },
+  watch: {
+    '$route' (_) {
+      this.get_memos()
     }
   },
   components: {
