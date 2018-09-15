@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     get 'memos', to: 'memos#index'
     get 'users', to: 'users#index'
     get 'current_user', to: 'users#current_user'
+    get 'tags', to: 'tags#index'
   end
 
   get '*path', to: redirect('/')
