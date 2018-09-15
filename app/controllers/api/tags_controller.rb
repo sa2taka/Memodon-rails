@@ -20,5 +20,6 @@ class Api::TagsController < ApplicationController
       .joins(:tags)
       .select('tags.*')
       .where(user_id: user_id)
+      .uniq
   end
 end
