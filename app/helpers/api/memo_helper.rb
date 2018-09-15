@@ -1,0 +1,2 @@
+module Api::MemoHelper
+end
