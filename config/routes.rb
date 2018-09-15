@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     get 'users', to: 'users#index'
     get 'current_user', to: 'users#current_user'
     get 'tags', to: 'tags#index'
+    get 'tags/recent_tags', to: 'tags#recent'
+    get 'tags/most_tags', to: 'tags#most'
   end
 
   get '*path', to: redirect('/')
