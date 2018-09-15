@@ -43,6 +43,7 @@ class Api::TagsController < ApplicationController
       .joins(:tags)
       .select('tags.*')
       .where(user_id: user_id)
+      .order('tags.name')
       .uniq
   end
 
