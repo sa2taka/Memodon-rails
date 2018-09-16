@@ -42,7 +42,6 @@ export default {
   },
   methods: {
     deleteTag: function(text) {
-      console.log(text)
       return text.replace(/<a href="[^"]*?" class="mention hashtag"\s*rel="tag">#<span>.*?<\/span><\/a>(\s*<br \/>)?/ig, '')
     },
     deleteHeadBr: function(text) {
@@ -54,12 +53,12 @@ export default {
 
 <style>
 .tag {
-  width: 19rem;
+  width: 17rem;
   border: solid 2px black;
   overflow-wrap: break-word;
   overflow: hidden;
-  margin: 1rem;
-  padding: 1rem;
+  margin: .5rem;
+  padding: .5rem;
 }
 
 .tag__title {

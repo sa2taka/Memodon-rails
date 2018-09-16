@@ -1,6 +1,8 @@
 <template>
   <div id="tags">
     <tag :tag="tag" v-for="tag in tags" :key="tag.name"></tag>
+    <div class="empty" v-for="n in 10">
+    </div>
   </div>
 </template>
 
@@ -18,6 +20,8 @@ export default {
   mounted () {
     this.get_tags()
   },
+  computed: {
+  },
   methods: {
     get_tags: function () {
       const self = this
@@ -34,7 +38,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 #tags {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -45,5 +49,12 @@ export default {
   -webkit-justify-content: center;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+.empty {
+  width: 17rem;
+  visibility: hidden;
+  margin: .5rem;
+  padding: .5rem;
 }
 </style>
