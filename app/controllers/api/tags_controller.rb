@@ -41,10 +41,9 @@ class Api::TagsController < ApplicationController
   def search_user_tags(user_id)
     Tag
       .joins(:memos)
-      .select('tags.name, memos.text, count(*) as count')
+      .select('tags.name, memos.text')
       .where(['memos.user_id = ?', user_id])
       .group('tags.name, memos.text')
-      .order('tags.name')
       .uniq(&:name)
   end
 

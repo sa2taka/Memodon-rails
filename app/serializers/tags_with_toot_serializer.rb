@@ -1,3 +1,3 @@
 class TagsWithTootSerializer < ActiveModel::Serializer
-  attributes :name, :text, :count
+  attributes :name, :text
 end

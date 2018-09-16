@@ -4,11 +4,7 @@
       #{{ tag.name }}
     </router-link >
 
-    <div class="tag__status" v-html="formattedText">
-    </div>
-
-    <div class="tag__count">
-      {{tag.count}} Toot{{ tag.count > 1 ? 's' : '' }}
+    <div class="tag__status " v-html="formattedText">
     </div>
   </div>
 </template>
@@ -68,14 +64,9 @@ export default {
 
 .tag__status {
   font-size: 12px;
-  height: 68px;
+  height: 90px;
   overflow: hidden;
-}
-
-.tag__count {
-  font-size: 12px;
-  margin-top: 1em;
-  margin-bottom: 1em;
+  margin-bottom: 1rem;
 }
 
 .tag__status > p {
