@@ -52,9 +52,9 @@ export default {
 }
 
 .empty {
-  width: 17rem;
+  width: 18rem;
   visibility: hidden;
-  margin: .5rem;
-  padding: .5rem;
+  margin: 0.2rem;
+  padding: 4px;
 }
 </style>

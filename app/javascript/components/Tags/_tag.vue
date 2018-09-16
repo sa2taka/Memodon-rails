@@ -1,10 +1,12 @@
 <template>
   <div class="tag">
-    <router-link class="tag__title" :to="{ name: 'tag', params: { tagname: tag.name} }">
-      #{{ tag.name }}
-    </router-link >
+    <div class=" card z-depth-2 tag__card">
+      <router-link class="tag__title" :to="{ name: 'tag', params: { tagname: tag.name} }">
+        #{{ tag.name }}
+      </router-link >
 
-    <div class="tag__status " v-html="formattedText">
+      <div class="tag__status " v-html="formattedText">
+      </div>
     </div>
   </div>
 </template>
@@ -49,12 +51,15 @@ export default {
 
 <style>
 .tag {
-  width: 17rem;
-  border: solid 2px black;
+  width: 18rem;
   overflow-wrap: break-word;
   overflow: hidden;
-  margin: .5rem;
-  padding: .5rem;
+  padding: 4px;
+  margin: 0.2rem;
+}
+
+.tag__card {
+  padding: 1rem;
 }
 
 .tag__title {

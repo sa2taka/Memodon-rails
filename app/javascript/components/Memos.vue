@@ -1,6 +1,7 @@
 <template>
   <div id="memos" >
     <div class="row">
+      <a class="back_to_tags" @click="back_to_tags" v-if="isTagMemos">&lt;&lt;タグ一覧へ</a>
       <a class="btn col offset-s1 s2" @click="_test_crawl">クロール</a>
       <div class="switch col offset-s3 s5">
         <label class="column-switch">
@@ -59,6 +60,14 @@ export default {
     },
     toggleMulctiColumn: function () {
       this.isMultiColumn = !this.isMultiColumn
+    },
+    back_to_tags: function () {
+      location.href = "/#/tags"
+    }
+  },
+  computed: {
+    isTagMemos: function () {
+      return location.href.match(/tag/)
     }
   },
   watch: {
@@ -78,5 +87,13 @@ export default {
   font-size: 22px;
   font-weight: 600;
   color: rgb(51, 51, 51);
+}
+
+.back_to_tags {
+  cursor: pointer;
+}
+
+.back_to_tags:hover {
+  text-decoration: underline;
 }
 </style>
