@@ -45,7 +45,7 @@ class Api::TagsController < ApplicationController
       .where(['memos.user_id = ?', user_id])
       .group('tags.name, memos.text')
       .order('tags.name')
-      .uniq
+      .uniq(&:name)
   end
 
   def search_recent_tags(user_id)
