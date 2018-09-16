@@ -1,17 +1,6 @@
 <template>
   <div id="memos" >
-    <div class="row">
-      <a class="back_to_tags" @click="back_to_tags" v-if="isTagMemos">&lt;&lt;タグ一覧へ</a>
-      <a class="btn col offset-s1 s2" @click="_test_crawl">クロール</a>
-      <div class="switch col offset-s3 s5">
-        <label class="column-switch">
-          単独カラム
-          <input type="checkbox" checked @click="toggleMulctiColumn">
-          <span class="lever"></span>
-          複数カラム
-        </label>
-      </div>
-    </div>
+    <memos-bar @toggleColumn="toggleMultiColumn"></memos-bar>
 
     <transition name="memos">
       <multi-column-memos :memos="memos" v-if="isMultiColumn"></multi-column-memos>
@@ -21,8 +10,9 @@
 </template>
 
 <script>
-import MultiColumnMemos from './Memos/_multi_column_memos.vue'
-import OneColumnMemos from './Memos/_one_column_memos.vue'
+import MultiColumnMemos from './Memos/_multi_column_memos'
+import OneColumnMemos from './Memos/_one_column_memos'
+import MemosBar from './Memos/_memos_bar.vue'
 import axios from 'axios'
 
 export default {
@@ -58,7 +48,7 @@ export default {
         self.$forceUpdate()
       })
     },
-    toggleMulctiColumn: function () {
+    toggleMultiColumn: function () {
       this.isMultiColumn = !this.isMultiColumn
     },
     back_to_tags: function () {
@@ -66,9 +56,6 @@ export default {
     }
   },
   computed: {
-    isTagMemos: function () {
-      return location.href.match(/tag/)
-    }
   },
   watch: {
     '$route' (_) {
@@ -77,7 +64,8 @@ export default {
   },
   components: {
     MultiColumnMemos,
-    OneColumnMemos
+    OneColumnMemos,
+    MemosBar
   }
 }
 </script>
