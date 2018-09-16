@@ -7,22 +7,27 @@ import TagsPage from './components/Tags'
 const mode = 'hash'
 const routes = [{
     path: '/',
+    name: 'home',
     component: HomePage
   },
   {
     path: '/memos',
+    name: 'memos',
     component: MemosPage
   },
   {
     path: '/tutorial',
+    name: 'tutorial',
     component: TutorialPage
   },
   {
     path: '/memos/tag/:tagname',
+    name: 'tag',
     component: MemosPage
   },
   {
     path: '/tags',
+    name: 'tags',
     component: TagsPage
   },
 ]
