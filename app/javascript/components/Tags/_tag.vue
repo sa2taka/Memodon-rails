@@ -1,8 +1,8 @@
 <template>
   <div class="tag">
-    <div class="tag__title">
+    <router-link class="tag__title" :to="{ name: 'tag', params: { tagname: tag.name} }">
       #{{ tag.name }}
-    </div>
+    </router-link >
 
     <div class="tag__status" v-html="formattedText">
     </div>
@@ -17,7 +17,7 @@
 import axios from 'axios'
 
 export default {
-  name: 'tags',
+  name: 'tag',
   props: {
     tag: {
       type: Object,
@@ -64,7 +64,6 @@ export default {
 .tag__title {
   font-size: 1.5em;
   font-weight: 600;
-  color: rgb(0, 178, 255);
 }
 
 .tag__status {
