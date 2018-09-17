@@ -1,11 +1,9 @@
-class Api::MemosController < ApplicationController
+class Api::MemosController < ApiController
   def index
-    render json: login_error if session[:user_id].nil?
     render json: create_memos, each_serializer: MemosSerializer
   end
 
   def is_crawling
-    render json: login_error if session[:user_id].nil?
     render json: create_is_crawling
   end
 
@@ -27,10 +25,6 @@ class Api::MemosController < ApplicationController
             .instance
             .is_crawling
     { answer: answer }
-  end
-
-  def login_error
-    LOGIN_ERROR
   end
 
   def find_user_memos(user_id, page, size)

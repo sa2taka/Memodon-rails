@@ -1,6 +1,4 @@
-class Api::TagsController < ApplicationController
-  before_action :require_login
-
+class Api::TagsController < ApiController
   def index
     render json: user_tags, each_serializer: TagsWithTootSerializer
   end
@@ -14,10 +12,6 @@ class Api::TagsController < ApplicationController
   end
 
   private
-
-  def require_login
-    render json: login_error if session[:user_id].nil?
-  end
 
   def user_tags
     user_id = session[:user_id]
@@ -35,7 +29,7 @@ class Api::TagsController < ApplicationController
   end
 
   def login_error
-    { error: 'Invalid Login!!' }
+    LOGIN_ERROR
   end
 
   def search_user_tags(user_id)
