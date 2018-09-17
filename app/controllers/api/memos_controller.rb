@@ -4,6 +4,11 @@ class Api::MemosController < ApplicationController
     render json: create_memos, each_serializer: MemosSerializer
   end
 
+  def is_crawling
+    render json: login_error if session[:user_id].nil?
+    render json: create_is_crawling
+  end
+
   private
 
   def create_memos
@@ -13,6 +18,15 @@ class Api::MemosController < ApplicationController
     tag_name = params[:tag_name]
     return find_user_memos_with_tag(user_id, page, size, tag_name) unless tag_name.nil?
     find_user_memos(user_id, page, size)
+  end
+
+  def create_is_crawling
+    user_id = session[:user_id]
+    answer = User
+            .find(user_id)
+            .instance
+            .is_crawling
+    { answer: answer }
   end
 
   def login_error

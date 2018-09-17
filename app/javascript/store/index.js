@@ -2,7 +2,8 @@ import actions from './action-types'
 import mutations from './mutation-types'
 
 const state = {
-  imageUrl: ''
+  imageUrl: '',
+  beforeCrawlingUrl: ''
 }
 
 const getters = {}

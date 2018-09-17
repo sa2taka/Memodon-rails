@@ -1,7 +1,8 @@
 <template>
-  <div class="memos-bar row">
+  <div class="memos-bar">
     <a class="back_to_tags" @click="back_to_tags" v-if="isTagMemos">&lt;&lt;タグ一覧へ</a>
-    <a class="btn btn-waves" @click="_test_crawl">クロール</a>
+    <div v-else></div>
+    <a class="btn btn-waves crawl-btn" @click="goToCrawl">新規メモを取得</a>
     <div class="switch bar-menu">
       <a id="menu" class="waves-effect waves-light btn btn-floating cyan darken-1 bar-menu__btn" @click="openMenu">
         <i class="material-icons">menu</i>
@@ -35,11 +36,9 @@ export default {
     this.instance = M.TapTarget.init(elems, options)[0]
   },
   methods: {
-    _test_crawl: function () {
-      const xhr = new XMLHttpRequest()
-      const url = 'http://localhost:3000/memo/crawl'
-      xhr.open('post', url, true)
-      xhr.send()
+    goToCrawl: function () {
+      this.$store.commit('setBeforeCrawlingUrl', location.href)
+      this.$router.push({ name: 'crawling' })
     },
     back_to_tags: function () {
       location.href = "/#/tags"
@@ -59,6 +58,18 @@ export default {
 </script>
 
 <style scoped>
+.memos-bar {
+  width: 90%;
+  margin: 12px auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: space-between;
+  -ms-flex-pack: space-between;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+}
 .tap-target {
   overflow: hidden;
 }
@@ -71,6 +82,11 @@ export default {
 
 .back_to_tags {
   cursor: pointer;
+  font-size: 16px;
+}
+
+.crawl-btn {
+  right: 0;
 }
 
 .bar-menu {

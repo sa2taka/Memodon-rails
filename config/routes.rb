@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     get 'memos', to: 'memos#index'
+    get 'is_crawling', to: 'memos#is_crawling'
     get 'users', to: 'users#index'
     get 'current_user', to: 'users#current_user'
     get 'tags', to: 'tags#index'

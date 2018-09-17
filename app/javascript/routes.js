@@ -3,6 +3,7 @@ import HomePage from './components/Home'
 import MemosPage from './components/Memos'
 import TutorialPage from './components/Tutorial'
 import TagsPage from './components/Tags'
+import ClawlingPage from './components/Crawling'
 
 const mode = 'hash'
 const routes = [{
@@ -30,6 +31,11 @@ const routes = [{
     name: 'tags',
     component: TagsPage
   },
+  {
+    path: '/crawling',
+    name: 'crawling',
+    component: ClawlingPage
+  }
 ]
 
 export default new VueRouter({

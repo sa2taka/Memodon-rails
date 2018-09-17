@@ -29,12 +29,6 @@ export default {
     this.get_memos()
   },
   methods: {
-    _test_crawl: function () {
-      const xhr = new XMLHttpRequest()
-      const url = 'http://localhost:3000/memo/crawl'
-      xhr.open('post', url, true)
-      xhr.send()
-    },
     get_memos: function () {
       const params = {
         page:     this.page,
