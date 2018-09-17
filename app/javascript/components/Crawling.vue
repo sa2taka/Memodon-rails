@@ -30,11 +30,10 @@ export default {
       .then(function(response) {
         const is_crawling = response.data.answer
         if (is_crawling) {
-          setTimeout(this.judge, 2000)
+          setTimeout(self.judge, 2000)
         }
         else {
           const url = self.$store.state.beforeCrawlingUrl
-          console.log(url)
           if (url) {
             location.href = self.$store.state.beforeCrawlingUrl
           }

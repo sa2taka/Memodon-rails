@@ -38,7 +38,6 @@ export default {
       const self = this
       axios.get('/api/memos', { params })
       .then(function(response) {
-        console.log(response.data.error_type && response.data.error_type === 'invalid_login')
         if (response.data.error_type && response.data.error_type === 'invalid_login') {
           location.href = '/login'
         }
