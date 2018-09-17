@@ -4,6 +4,7 @@ class LoginController < ApplicationController
 
   def logout
     session[:user_id] = nil
+    flash.now['red accent-2'] = nil
     redirect_to root_path
   end
 
