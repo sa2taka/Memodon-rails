@@ -1,9 +1,23 @@
 <template>
   <div id="tags">
+    <div class="title">最近呟いたタグ</div>
+    <hr class="title-line" />
+    <div class="tag-area">
+      <tag :tag="tag" v-for="tag in tags['recent_tags']" :key="tag.name"></tag>
+      <div class="empty" v-for="n in 10"></div>
+    </div>
+
+    <div class="title">最も多く呟いてるタグ</div>
+    <hr class="title-line" />
+    <div class="tag-area">
+      <tag :tag="tag" v-for="tag in tags['most_tags']" :key="tag.name"></tag>
+      <div class="empty" v-for="n in 10"></div>
+    </div>
+
     <div class="title">全てのタグ</div>
     <hr class="title-line" />
     <div class="tag-area">
-      <tag :tag="tag" v-for="tag in tags" :key="tag.name"></tag>
+      <tag :tag="tag" v-for="tag in tags['user_tags']" :key="tag.name"></tag>
       <div class="empty" v-for="n in 10"></div>
     </div>
   </div>
@@ -31,7 +45,6 @@ export default {
       axios.get('/api/tags', { })
       .then(function(response) {
         self.tags = response.data
-        self.$forceUpdate()
       })
     },
   },

@@ -5,7 +5,10 @@
         #{{ tag.name }}
       </router-link >
 
-      <div class="tag__status " v-html="formattedText">
+      <div class="tag__status" v-html="formattedText"></div>
+
+      <div class="tag__count">
+        {{ tag['count' ]}} toot{{ tag['count']  === 1 ? '' : 's' }}
       </div>
     </div>
   </div>
@@ -76,5 +79,9 @@ export default {
 
 .tag__status > p {
   margin: 18px 0;
+}
+
+.tag__count {
+  font-size: 12px;
 }
 </style>
