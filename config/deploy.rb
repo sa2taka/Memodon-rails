@@ -3,10 +3,10 @@ lock '~> 3.11.0'
 
 
 
-server 'memodon.com', port: 10022, roles: [:app, :web, :db], primary: true
-set :application,     'memodon'
-set :repo_url,        'git@github.com:sa2taka/Memodon-rails'
-set :user,            'deploy'
+server "memodon.com", port: 10022, roles: [:app, :web, :db], primary: true
+set :application,     "memodon"
+set :repo_url,        "git@github.com:sa2taka/Memodon-rails"
+set :user,            "deploy"
 set :ssh_options,     {
   forward_agent: true,
   user: fetch(:user),
@@ -28,24 +28,52 @@ set :puma_preload_app, true
 set :puma_worker_timeout, nil
 set :puma_init_active_record, true
 set :rbenv_type, :system
-set :rbenv_ruby, '2.5.1'
+set :rbenv_ruby, "2.5.1"
 set :linked_dirs, fetch(:linked_dirs, []).push(
-  'log',
-  'tmp/pids',
-  'tmp/cache',
-  'tmp/sockets',
-  'vendor/bundle',
-  'public/system',
-  'public/uploads',
+  "log",
+  "tmp/pids",
+  "tmp/cache",
+  "tmp/sockets",
+  "vendor/bundle",
+  "public/system",
+  "public/uploads",
 )
 set :linked_files, fetch(:linked_files, []).push(
-  'config/database.yml',
-  'config/secrets.yml',
-  'config/master.key'
+  "config/database.yml",
+  "config/secrets.yml",
+  "config/master.key"
 )
 
+# sidekiq
+set :sidekiq_pid_path, -> { File.join(shared_path, "tmp", "pids", "sidekiq.pid") }
+namespace :sidekiq do
+  desc "sidekiq stop"
+  task :stop do
+    on roles(:app) do
+      execute "kill -USR1 `cat #{fetch :sidekiq_pid_path}`; true"
+    end
+  end
+  before "deploy:updated", "sidekiq:stop"
+
+  desc "sidekiq kill"
+  task :kill do
+    on roles(:app) do
+      execute "sudo kill -TERM `cat #{fetch :sidekiq_pid_path}`; true", raise_on_non_zero_exit: false
+    end
+  end
+  after "deploy:finishing", "sidekiq:kill"
+
+  desc "sidekiq start"
+  task :start do
+    on roles(:app) do
+      execute "pushd /var/www/memodon/current/; bundle exec sidekiq -C config/sidekiq.yml --environment=production; popd"
+    end
+  end
+  after "sidekiq:kill", "sidekiq:start"
+end
+
 namespace :puma do
-  desc 'Create Directories for Puma Pids and Socket'
+  desc "Create Directories for Puma Pids and Socket"
   task :make_dirs do
     on roles(:app) do
       execute "mkdir #{shared_path}/tmp/sockets -p"
@@ -67,18 +95,18 @@ namespace :deploy do
     end
   end
 
-  desc 'Initial Deploy'
+  desc "Initial Deploy"
   task :initial do
     on roles(:app) do
-      before 'deploy:restart', 'puma:start'
-      invoke 'deploy'
+      before "deploy:restart", "puma:start"
+      invoke "deploy"
     end
   end
 
-  desc 'Restart application'
+  desc "Restart application"
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
-      invoke 'puma:restart'
+      invoke "puma:restart"
     end
   end
 
