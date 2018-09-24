@@ -20,7 +20,7 @@ export default {
   methods: {
     crawl: function () {
       const xhr = new XMLHttpRequest()
-      const url = 'https//memodon.com/memo/crawl'
+      const url = '/memo/crawl'
       xhr.open('post', url, true)
       xhr.send()
     },

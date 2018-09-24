@@ -1,4 +1,6 @@
 class LoginController < ApplicationController
+  protect_from_forgery :except => [:mastodon_login]
+
   def index
   end
 
