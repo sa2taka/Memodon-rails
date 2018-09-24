@@ -7,7 +7,7 @@ require 'singleton'
 class InstanceRegister
   APP_NAME = 'memodon'.freeze
   REDIRECT_URI = if ENV['RACK_ENV'] == 'production'
-    'https://memodon_rails.herokuapp.com/callback/oauth'.freeze
+    'https://memodon.com/callback/oauth'.freeze
   else
     'http://localhost:3000/callback/oauth'.freeze
   end
