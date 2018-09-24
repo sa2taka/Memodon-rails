@@ -16,7 +16,7 @@
           </div>
           <div class="col s6 center action-column">
             <div class="delete-memo">
-              <a class="card-link" :click="deleteMemo(memo.id)">
+              <a class="card-link" @click="deleteMemo(memo.id)">
                 <i class="material-icons memo-link-icon">delete_forever</i>
               </a>
             </div>
@@ -29,6 +29,7 @@
 
 <script>
 import Media from './_media.vue'
+import axios from '../../store/axios'
 export default {
   name: 'memo',
   data () {
@@ -47,7 +48,13 @@ export default {
   },
   methods: {
     deleteMemo: function (id) {
-
+      const self = this
+      if(confirm('メモは二度と戻りません。削除しますか?(実際のTootは削除されません')){
+        const url = '/api/memo'
+        axios.delete(url, { 'memo_id': id })
+        .then(function(response) {
+        })
+      }
     }
   },
   components: {

@@ -3,6 +3,11 @@ class Api::MemosController < ApiController
     render json: create_memos, each_serializer: MemosSerializer
   end
 
+  def delete
+    memo = delete_memo
+    render json: memo, serializer: MemosSerializer
+  end
+
   def is_crawling
     render json: create_is_crawling
   end
@@ -45,5 +50,12 @@ class Api::MemosController < ApiController
       .joins(:tags)
       .where(['tags.name = ?', tag_name])
       .order('memos.status_id desc')
+  end
+
+  def delete_memo
+    deleted_memo = Memo.find(params[:memo_id])
+    deleted_memo.destroy
+    flash['cyan accent-2'] = 'メモが正常に削除されました'
+    deleted_memo
   end
 end
