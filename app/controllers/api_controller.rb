@@ -4,8 +4,10 @@ class ApiController < ApplicationController
   private
 
   def require_login
-    flash['red accent-2'] = 'ログインしてください'
-    render json: login_error if session[:user_id].nil?
+    if session[:user_id].nil?
+      flash['red accent-2'] = 'ログインしてください'
+      render json: login_error
+    end
   end
 
   def login_error
