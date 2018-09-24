@@ -83,5 +83,5 @@ test:
 production:
   <<: *default
   database: memodon
-  username: memodon-user
+  username: memodon_user
   password: <%= ENV['MEMODON_DATABASE_PASSWORD'] %>
