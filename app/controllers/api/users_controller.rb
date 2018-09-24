@@ -1,7 +1,6 @@
-class Api::UsersController < ApplicationController
-  DEFAULT_PAGE_SIZE = 100
+class Api::UsersController < ApiController
   def index
-    render json: create_return_value
+    render json: users
   end
 
   def current_user
@@ -10,13 +9,13 @@ class Api::UsersController < ApplicationController
 
   private
 
-  def create_return_value
+  def users
     page    = params[:page] || 1
-    size    = params[:size] || DEFAULT_PAGE_SIZE
-    users(page, size)
+    size    = params[:size] || Constans::DEFAULT_PAGE_SIZE
+    find_users(page, size)
   end
 
-  def users(page, size)
+  def find_users(page, size)
     User.page(page).per(size)
   end
 end

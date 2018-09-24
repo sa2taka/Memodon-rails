@@ -25,14 +25,12 @@ export default {
     const elems = document.querySelectorAll('.materialboxed')
     const options = {}
     this.instance = M.Materialbox.init(elems, options)[0]
-    console.log(this.getMaxWidthAndHeightStyle())
   },
   methods: {
     setImageUrl: function () {
       this.$store.commit('setImageUrl', this.medium.url)
     },
     getMaxWidthAndHeightStyle: function () {
-      console.log(this.isOneColumn)
       return {
         'max-width': this.isOneColumn ? '224px' : null,
         'max-height': this.isOneColumn ? '224px' : null

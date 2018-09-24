@@ -33,3 +33,17 @@
   -webkit-justify-content: center;
   justify-content: center;
 }
+
+/* ここから下はmastodon公式からコピーしてきたもの */
+.invisible {
+  font-size: 0;
+  line-height: 0;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.ellipsis:after {
+  content: "\2026";
+}

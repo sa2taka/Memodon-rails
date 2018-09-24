@@ -4,5 +4,9 @@ class MemosSerializer < ActiveModel::Serializer
   belongs_to :user, serializer: UsersSerializer
 
   has_many   :media, serializer: MediaSerializer
-  has_many   :tags,  serializer: TagsSerializer
+  has_many   :tags
+
+  class TagSerializer < ActiveModel::Serializer
+    attributes :name
+  end
 end

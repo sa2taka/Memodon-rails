@@ -1,13 +1,14 @@
 import axios from 'axios'
 
 const setToken = (params) => {
-  const tags = document.getElementsByTagName("meta")
-  tags.forEach((tag) => {
-    if (tag.name === "csrf-token") {
-      params.authenticity_token = tag.content
-      return params
+  const tags = document.getElementsByTagName('meta')
+  for (let i in tags) {
+    if (tags[i].name === 'csrf-token') {
+      params.authenticity_token = tags[i].content;
+      break;
     }
-  })
+  }
+  return params;
 }
 
 export default {

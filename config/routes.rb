@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root to: 'app#index'
 
+  delete '/', to: 'app#index'
   get 'login', to: 'login#index', as: 'login'
   post 'logout', to: 'login#logout', as: 'logout'
   post 'login/mastodon_login'
@@ -11,8 +12,11 @@ Rails.application.routes.draw do
 
   namespace :api do
     get 'memos', to: 'memos#index'
+    get 'is_crawling', to: 'memos#is_crawling'
     get 'users', to: 'users#index'
     get 'current_user', to: 'users#current_user'
+    get 'tags', to: 'tags#index'
+    delete 'memo', to: 'memos#delete'
   end
 
   get '*path', to: redirect('/')
