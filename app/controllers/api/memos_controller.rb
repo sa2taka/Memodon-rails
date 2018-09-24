@@ -55,7 +55,6 @@ class Api::MemosController < ApiController
   def delete_memo
     deleted_memo = Memo.find(params[:memo_id])
     deleted_memo.destroy
-    flash['cyan accent-2'] = 'メモが正常に削除されました'
     deleted_memo
   end
 end

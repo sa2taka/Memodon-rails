@@ -51,8 +51,9 @@ export default {
       const self = this
       if(confirm('メモは二度と戻りません。削除しますか?(実際のTootは削除されません')){
         const url = '/api/memo'
-        axios.delete(url, { 'memo_id': id })
+        axios.delete(url, { 'memo_id': id, 'redirect_url': location.href })
         .then(function(response) {
+          self.$emit('delete_memo')
         })
       }
     }

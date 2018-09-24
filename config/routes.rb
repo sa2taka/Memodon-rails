@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root to: 'app#index'
 
+  delete '/', to: 'app#index'
   get 'login', to: 'login#index', as: 'login'
   post 'logout', to: 'login#logout', as: 'logout'
   post 'login/mastodon_login'

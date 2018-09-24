@@ -1,6 +1,6 @@
 <template>
   <div class="memos column-base">
-    <memo :memo="memo" v-for="memo in memos" :key="memo.id"></memo>
+    <memo :memo="memo" v-for="memo in memos" :key="memo.id" @delete_memo="$emit('delete_memo')"></memo>
   </div>
 </template>
 
@@ -27,6 +27,7 @@ export default {
       gutter: 20,
       baseWidth: 400
     })
+
     this.setExecuteLayout(33)
   },
   updated () {

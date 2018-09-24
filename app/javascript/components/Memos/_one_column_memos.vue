@@ -1,6 +1,6 @@
 <template>
   <div class="one-column-base">
-    <memo :memo="memo" v-for="memo in memos" :isOneColumn="true" :key="memo.id"></memo>
+    <memo :memo="memo" v-for="memo in memos" :isOneColumn="true" :key="memo.id" @delete_memo="$emit('memo_delete')"></memo>
   </div>
 </template>
 

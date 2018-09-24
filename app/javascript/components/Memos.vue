@@ -3,8 +3,8 @@
     <memos-bar @toggleColumn="toggleMultiColumn"></memos-bar>
 
     <transition name="memos">
-      <multi-column-memos :memos="memos" v-if="isMultiColumn"></multi-column-memos>
-      <one-column-memos :memos="memos" v-else></one-column-memos>
+      <multi-column-memos :memos="memos" v-if="isMultiColumn" @delete_memo="onDeteleMemo"></multi-column-memos>
+      <one-column-memos :memos="memos" v-else @delete_memo="onDeteleMemo"></one-column-memos>
     </transition>
   </div>
 </template>
@@ -36,6 +36,7 @@ export default {
         tag_name: this.$route.params.tagname
       }
       const self = this
+      this.memos = []
       axios.get('/api/memos', { params })
       .then(function(response) {
         if (response.data.error_type && response.data.error_type === 'invalid_login') {
@@ -50,6 +51,9 @@ export default {
     },
     back_to_tags: function () {
       location.href = "/#/tags"
+    },
+    onDeteleMemo: function () {
+      this.get_memos()
     }
   },
   computed: {
