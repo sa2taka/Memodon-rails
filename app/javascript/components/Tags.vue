@@ -1,7 +1,10 @@
 <template>
   <div id="tags">
-    <tag :tag="tag" v-for="tag in tags" :key="tag.name"></tag>
-    <div class="empty" v-for="n in 10">
+    <div class="title">全てのタグ</div>
+    <hr class="title-line" />
+    <div class="tag-area">
+      <tag :tag="tag" v-for="tag in tags" :key="tag.name"></tag>
+      <div class="empty" v-for="n in 10"></div>
     </div>
   </div>
 </template>
@@ -39,7 +42,7 @@ export default {
 </script>
 
 <style>
-#tags {
+.tag-area {
   display: -webkit-box;
   display: -ms-flexbox;
   display: -webkit-flex;
@@ -55,6 +58,19 @@ export default {
   width: 18rem;
   visibility: hidden;
   margin: 0.2rem;
-  padding: 4px;
+}
+
+.title {
+  position: relative;
+  font-size: 24px;
+  font-weight: 600;
+  left: 2em;
+}
+
+.title-line {
+  border: 0;
+  height: 2px;
+  background-color: #aaaaaa;
+  margin: 0;
 }
 </style>
