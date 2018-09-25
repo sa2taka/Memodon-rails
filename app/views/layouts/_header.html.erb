@@ -32,7 +32,9 @@ if (typeof navBarRoot === 'undefined') {
   const navBarRoot  = document.getElementById('nav-bar-root')
   const navBarMemos = document.getElementsByClassName('nav-bar-memos')
   navBarRoot.addEventListener('click', redirect)
-  navBarMemos[0].addEventListener('click', redirect)
-  navBarMemos[1].addEventListener('click', redirect)
+
+  for (let i in navBarMemos) {
+    navBarMemos[i].addEventListener('click', redirect)
+  }
 }
 </script>
