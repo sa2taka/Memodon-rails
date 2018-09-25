@@ -7,6 +7,7 @@ class TagsSerializer < ActiveModel::Serializer
       .select('count(*) as count')
       .where(['memos.user_id = ? and tags.name = ?', user_id, name])
       .group('tags.name')
+      .order(nil)
       .first
       .count
   end
@@ -14,10 +15,10 @@ class TagsSerializer < ActiveModel::Serializer
   def text
     Tag
       .joins(:memos)
-      .select('memos.text')
+      .select('memos.text, memos.status_id')
       .where(['memos.user_id = ? and tags.name = ?', user_id, name])
       .group('memos.text, memos.status_id')
-      .order('memos.status_id desc')
+      .order(nil)
       .first
       .text
   end

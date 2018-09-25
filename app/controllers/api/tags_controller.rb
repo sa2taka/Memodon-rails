@@ -49,8 +49,9 @@ class Api::TagsController < ApiController
       .joins(:memos)
       .select('tags.name')
       .where(['memos.user_id = ?', user_id])
-      .group('tags.name')
+      .group('tags.name, memos.status_id')
       .order('memos.status_id desc')
+      .uniq(&:name)
       .take(Constants::DEFAULT_TAGS_SIZE)
   end
 
