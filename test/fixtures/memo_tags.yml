@@ -17,9 +17,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  memo: one
-  tag: one
+  memo: memo1
+  tag: tag1
 
 two:
-  memo: two
-  tag: two
+  memo: memo1
+  tag: tag2
+
+three:
+  memo: memo2
+  tag: tag1

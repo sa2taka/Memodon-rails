@@ -14,8 +14,8 @@
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
+tag1:
+  name: タグ1
 
-two:
-  name: MyString
+tag2:
+  name: タグ2

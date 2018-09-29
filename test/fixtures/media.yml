@@ -17,14 +17,4 @@
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  type: 
-  url: MyString
-  preview_url: MyString
-  memo: one
-
-two:
-  type: 
-  url: MyString
-  preview_url: MyString
-  memo: two
+# Nothing

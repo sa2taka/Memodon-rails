@@ -19,10 +19,11 @@
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  url: MyString
-  title: MyString
+testdon:
+  url: https://test.mstodon.com
+  title: テスト丼
 
-two:
-  url: MyString
-  title: MyString
+dondon:
+  url: https://mastodon.mastodon.com
+  title: マストドン*2
+  is_crawling: true

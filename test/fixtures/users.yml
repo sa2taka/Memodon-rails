@@ -20,12 +20,12 @@
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  username: MyString
-  display: MyString
-  instance: one
+user1:
+  username: test1
+  display: テスト1
+  instance: testdon
 
-two:
-  username: MyString
-  display: MyString
-  instance: two
+user2:
+  username: test2
+  display: テスト2
+  instance: dondon

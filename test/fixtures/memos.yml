@@ -18,10 +18,14 @@
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  text: MyString
-  user: one
+memo1:
+  text: hogehoge
+  user: user1
 
-two:
-  text: MyString
-  user: two
+memo2:
+  text: fugafuga
+  user: user1
+
+memo3:
+  text: foobar
+  user: user2
