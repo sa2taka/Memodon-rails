@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2018_09_09_154807) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "instances", force: :cascade do |t|
     t.string "url"
     t.string "title"
@@ -28,15 +31,15 @@ ActiveRecord::Schema.define(version: 2018_09_09_154807) do
     t.string "media_type"
     t.string "url"
     t.string "preview_url"
-    t.integer "memo_id"
+    t.bigint "memo_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["memo_id"], name: "index_media_on_memo_id"
   end
 
   create_table "memo_tags", force: :cascade do |t|
-    t.integer "memo_id"
-    t.integer "tag_id"
+    t.bigint "memo_id"
+    t.bigint "tag_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["memo_id"], name: "index_memo_tags_on_memo_id"
@@ -45,7 +48,7 @@ ActiveRecord::Schema.define(version: 2018_09_09_154807) do
 
   create_table "memos", force: :cascade do |t|
     t.string "text"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "status_id"
@@ -64,7 +67,7 @@ ActiveRecord::Schema.define(version: 2018_09_09_154807) do
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "display"
-    t.integer "instance_id"
+    t.bigint "instance_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "is_first", default: true, null: false
@@ -74,4 +77,9 @@ ActiveRecord::Schema.define(version: 2018_09_09_154807) do
     t.index ["username"], name: "index_users_on_username"
   end
 
+  add_foreign_key "media", "memos"
+  add_foreign_key "memo_tags", "memos"
+  add_foreign_key "memo_tags", "tags"
+  add_foreign_key "memos", "users"
+  add_foreign_key "users", "instances"
 end
