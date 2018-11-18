@@ -19,13 +19,13 @@
           <div class="btn waves-light btn-large to-memo-button">今すぐメモ一覧へ</div>
         </router-link>
 
-        <div :class="['arrow-area', 'arrow-area__back', 'flex-center', { 'clear': isFirst }]" @click="carouselInstance.prev()">
+        <div :class="['arrow-area', 'arrow-area__back', 'flex-center', { 'clear': isFirst }]" @click="prevCarousel()">
           <div class="arrow-area__base arrow-area__base__back flex-center">
             <i class="medium material-icons arrow">arrow_back</i>
           </div>
         </div>
 
-        <div :class="['arrow-area', 'arrow-area__next', 'flex-center', { 'clear': isLast }]" @click="carouselInstance.next()">
+        <div :class="['arrow-area', 'arrow-area__next', 'flex-center', { 'clear': isLast }]" @click="nextCarousel()">
           <div class="arrow-area__base arrow-area__base__next flex-center">
             <i class="medium material-icons arrow">arrow_forward</i>
           </div>
@@ -79,6 +79,16 @@ export default {
         return true
       }
       return num === this.carouselInstance.center
+    },
+    prevCarousel: function () {
+      if (!this.isFirst) {
+        this.carouselInstance.prev()
+      }
+    },
+    nextCarousel: function () {
+      if (!this.isLast) {
+        this.carouselInstance.next()
+      }
     }
   },
   components: {
@@ -180,7 +190,6 @@ export default {
   right: calc(50% - 660px);
   right: -webkit-calc(50% - 660px);
 }
-
 
 .arrow {
   position: relative;
