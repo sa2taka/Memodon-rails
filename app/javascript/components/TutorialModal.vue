@@ -145,7 +145,7 @@ export default {
   text-align: center; */
   transition: opacity 1.2s ease;
   width: 860px;
-  height: 540px;
+  height: 570px;
 }
 
 

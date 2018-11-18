@@ -4,7 +4,7 @@
       <div class="tutorial-title">
         Memodonを開いてメモを確認しよう!!
       </div>
-      <div class="memos-area ">
+      <div class="memos-area flex-center">
         <div class="memo-area">
           <div class="card orange lighten-3">
             <div class="card-content black-text">
@@ -22,7 +22,31 @@
             <div class="card-content black-text">
               <div class="status-content">
                 <div>
-                  <p>#メモ <br />#メモ <br />11/17は将棋の日</p>
+                  <p>#メモ <br />11/17は将棋の日</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="memo-area">
+          <div class="card orange lighten-3">
+            <div class="card-content black-text">
+              <div class="status-content">
+                <div>
+                  <p>#メモ <br />#Rails <br />Rails6で複数DB接続サポート</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="memo-area">
+          <div class="card orange lighten-3">
+            <div class="card-content black-text">
+              <div class="status-content">
+                <div>
+                  <p>#メモ <br />#4/16もくもく会オフ<br />焼き肉なう。</p>
                 </div>
               </div>
             </div>
@@ -35,7 +59,25 @@
 
 <script>
 export default {
-  name: 'base_memo'
+  name: 'base_memo',
+  mounted () {
+    const memos = document.querySelectorAll('.memo-area')
+    let delay = 500
+
+    memos.forEach( (memo) => {
+      memo.animate({
+        transform: [ 'translateY(200px)', 'translateY(0px)' ],
+        opacity:   [ 0, 1 ]
+      },
+      {
+        duration: 500,
+        delay: delay,
+        easing: 'ease',
+        fill: 'forwards'
+      })
+      delay += 100
+    })
+  }
 }
 </script>
 
@@ -47,12 +89,17 @@ export default {
   display: -webkit-flex;
   display: flex;
   flex-wrap: wrap;
-  margin: 0;
+  margin: auto;
+  -webkit-box-pack: space-around;
+  -ms-flex-pack: space-around;
+  -webkit-justify-content: space-around;
+  justify-content: space-around;
 }
 
 .memo-area {
   width: 40%;
-  margin: 20px;
+  margin: 5px;
+  opacity: 0;
 }
 
 .status-content {
