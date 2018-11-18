@@ -21,20 +21,25 @@
 document.addEventListener('DOMContentLoaded', () => {
   let elems = document.querySelectorAll('.sidenav')
   let instances = M.Sidenav.init(elems)
+
+  initialNavBar()
 })
 
 function redirect () {
   location.href = this.getAttribute('data-url')
 }
 
-// navBarRootが定義されていたらMemosも定義されている
-if (typeof navBarRoot === 'undefined') {
-  const navBarRoot  = document.getElementById('nav-bar-root')
-  const navBarMemos = document.getElementsByClassName('nav-bar-memos')
-  navBarRoot.addEventListener('click', redirect)
+function initialNavBar () {
+  // navBarRootが定義されていたらMemosも定義されている
+  if (typeof navBarRoot === 'undefined') {
+    const navBarRoot  = document.getElementById('nav-bar-root')
+    const navBarMemos = document.getElementsByClassName('nav-bar-memos')
+    navBarRoot.addEventListener('click', redirect)
 
-  for (let i in navBarMemos) {
-    navBarMemos[i].addEventListener('click', redirect)
+    for (let elm of navBarMemos) {
+      elm.addEventListener('click', redirect)
+    }
   }
 }
+
 </script>

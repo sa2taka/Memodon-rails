@@ -1,35 +1,35 @@
 <template>
-  <div id="tutorial" class="tutorial-area full-screen">
-    <div class="tutorial-top">
-      <div class="carousel carousel-slider center full-screen" style="height: 100%;">
-        <div class="carousel-item" href="#one!">
+  <div id="tutorial" class="tutorial-area">
+    <div class="tutorial-top flex-center">
+      <div class="carousel carousel-slider center" style="height: 100%;">
+
+        <div class="carousel-item flex-center" href="#one!">
           <transition name="base">
-            <base-toot class="tutorial-slide__content full-screen" v-if="isCenter(0)"></base-toot>
+            <base-toot class="tutorial-slide__content" v-if="isCenter(0)"></base-toot>
           </transition>
         </div>
-        <div class="carousel-item" href="#two!">
+
+        <div class="carousel-item flex-center" href="#two!">
           <transition name="base">
-            <base-memo class="tutorial-slide__content full-screen" href="#two!" v-if="isCenter(1)"></base-memo>
+            <base-memo class="tutorial-slide__content" href="#two!" v-if="isCenter(1)"></base-memo>
           </transition>
         </div>
+
         <router-link to="/memos">
           <div class="btn waves-light btn-large to-memo-button">今すぐメモ一覧へ</div>
         </router-link>
-        <transition name="arrow-back">
-          <div class="arrow-area arrow-area__back" v-if="carouselInstance.center !== 0"  @click="carouselInstance.prev()">
-            <div class="arrow-area__base arrow-area__base__back green darken-1">
-              <i class="medium material-icons arrow">arrow_back</i>
-            </div>
-          </div>
-        </transition>
 
-        <transition name="arrow-next">
-          <div class="arrow-area arrow-area__next" v-if="carouselInstance.center !== carouselElmsNum - 1" @click="carouselInstance.next()">
-            <div class="arrow-area__base arrow-area__base__next green darken-1">
-              <i class="medium material-icons arrow">arrow_forward</i>
-            </div>
+        <div :class="['arrow-area', 'arrow-area__back', 'flex-center', { 'clear': isFirst }]" @click="carouselInstance.prev()">
+          <div class="arrow-area__base arrow-area__base__back flex-center">
+            <i class="medium material-icons arrow">arrow_back</i>
           </div>
-        </transition>
+        </div>
+
+        <div :class="['arrow-area', 'arrow-area__next', 'flex-center', { 'clear': isLast }]" @click="carouselInstance.next()">
+          <div class="arrow-area__base arrow-area__base__next flex-center">
+            <i class="medium material-icons arrow">arrow_forward</i>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -46,7 +46,8 @@ export default {
       // Tutorialの並び順と名前
       carouselElms: [],
       carouselInstance: Object(),
-      carouselElmsNum: 2
+      carouselElmsNum: 2,
+      isFirstContentLoad: true
     }
   },
   mounted () {
@@ -55,7 +56,22 @@ export default {
     this.carouselElms = elms
     this.carouselInstance = M.Carousel.init(elms, options)[0]
   },
+
   computed: {
+    isFirst () {
+      // ここで this.carouselInstance.center を登場させないとcenterが変化してもこのisFirstが更新されない
+      // FIXME: この部分をもう少し賢く修正したい
+      this.carouselInstance.center
+
+      if (this.isFirstContentLoad) {
+        this.isFirstContentLoad = false
+        return true
+      }
+      return this.carouselInstance.center === 0
+    },
+    isLast () {
+      return this.carouselInstance.center === this.carouselElmsNum - 1
+    }
   },
   methods: {
     isCenter: function (num) {
@@ -74,21 +90,16 @@ export default {
 
 <style scoped>
 .tutorial-area {
-  margin: auto;
-  z-index: -1;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.85);
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
 }
 
 .tutorial-top {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-
-  -webkit-box-pack: space-between;
-  -ms-flex-pack: space-between;
-  -webkit-justify-content: space-between;
-  justify-content: space-between;
-
   position: relative;
   width: 100%;
   height: 100%;
@@ -123,6 +134,8 @@ export default {
   display: inline;
   text-align: center; */
   transition: opacity 1.2s ease;
+  width: 860px;
+  height: 540px;
 }
 
 
@@ -149,44 +162,41 @@ export default {
 }
 
 .arrow-area__back {
-  left: 0;
-  transform: translateX(-22%);
+  left: calc(50% - 660px);
+  left: -webkit-calc(50% - 660px);
 }
 
 .arrow-area__back:hover {
-  left: 0;
-  transform: translateX(-10%);
+  left: calc(50% - 660px);
+  left: -webkit-calc(50% - 660px);
 }
 
 .arrow-area__next {
-  right: 0;
-  transform: translateX(22%);
+  right: calc(50% - 660px);
+  right: -webkit-calc(50% - 660px);
 }
 
 .arrow-area__next:hover {
-  right: 0;
-  transform: translateX(10%);
+  right: calc(50% - 660px);
+  right: -webkit-calc(50% - 660px);
 }
 
 
 .arrow {
   position: relative;
-  top: 45%;
 }
 
 .arrow-area__base {
   position: absolute;
-  height: 100%;
-  width: 60%;
+  height: 72px;
+  width: 72px;
+  border-radius: 50%;
+  background-color: rgb(14, 107, 59);
+  text-align: center;
+  line-height: 72px;
+  justify-content: center;
 }
 
-.arrow-area__base__back{
-  left: 0;
-}
-
-.arrow-area__base__next {
-  right: 0;
-}
 
 .base-enter-active, .base-leave-active {
   transition: opacity 1.0s;
@@ -195,18 +205,13 @@ export default {
   opacity: 0;
 }
 
-.arrow-back-enter, .arrow-back-enter-active{
+.arrow-enter, .arrow-enter-active{
   transition: all .5s ease-out;
-}
-.arrow-back-enter, .arrow-back-leave-to, .arrow-back-enter:hover, .arrow-back-leave-to:hover {
-  transform: translateX(-100%)
 }
 
-.arrow-next-enter, .arrow-next-enter-active {
-  transition: all .5s ease-out;
+.arrow-enter, .arrow-leave-to, .arrow-enter:hover, .arrow-leave-to:hover {
+  opacity: 0;
 }
-.arrow-next-enter, .arrow-next-leave-to, .arrow-next-enter:hover, .arrow-next-leave-to:hover {
-  transform: translateX(100%)
-}
+
 
 </style>

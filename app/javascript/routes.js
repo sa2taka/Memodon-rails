@@ -1,7 +1,7 @@
 import VueRouter from 'vue-router'
 import HomePage from './components/Home'
 import MemosPage from './components/Memos'
-import TutorialPage from './components/Tutorial'
+import TutorialPage from './components/TutorialModal'
 import TagsPage from './components/Tags'
 import ClawlingPage from './components/Crawling'
 
