@@ -169,6 +169,7 @@ export default {
   width: 30%;
   height: 100%;
   transition: all .5s ease;
+  cursor: pointer;
 }
 
 .arrow-area__back {
