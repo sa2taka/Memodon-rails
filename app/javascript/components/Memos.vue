@@ -6,6 +6,9 @@
       <multi-column-memos :memos="memos" v-if="isMultiColumn" @delete_memo="onDeteleMemo"></multi-column-memos>
       <one-column-memos :memos="memos" v-else @delete_memo="onDeteleMemo"></one-column-memos>
     </transition>
+
+    <tutorial-modal v-if="isTutorial"></tutorial-modal>
+
   </div>
 </template>
 
@@ -13,6 +16,7 @@
 import MultiColumnMemos from './Memos/_multi_column_memos'
 import OneColumnMemos from './Memos/_one_column_memos'
 import MemosBar from './Memos/_memos_bar.vue'
+import TutorialModal from './TutorialModal'
 import axios from 'axios'
 
 export default {
@@ -57,6 +61,9 @@ export default {
     }
   },
   computed: {
+    isTutorial: function () {
+      return this.$route.query.tutorial
+    }
   },
   watch: {
     '$route' (_) {
@@ -66,7 +73,8 @@ export default {
   components: {
     MultiColumnMemos,
     OneColumnMemos,
-    MemosBar
+    MemosBar,
+    TutorialModal
   }
 }
 </script>
