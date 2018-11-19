@@ -20,13 +20,13 @@
         </router-link>
 
         <div :class="['arrow-area', 'arrow-area__back', 'flex-center', { 'clear': isFirst }]" @click="prevCarousel()">
-          <div class="arrow-area__base arrow-area__base__back flex-center">
+          <div class="arrow-area__base arrow-area__base__back flex-center teal lighten-1">
             <i class="medium material-icons arrow">arrow_back</i>
           </div>
         </div>
 
         <div :class="['arrow-area', 'arrow-area__next', 'flex-center', { 'clear': isLast }]" @click="nextCarousel()">
-          <div class="arrow-area__base arrow-area__base__next flex-center">
+          <div class="arrow-area__base arrow-area__base__next flex-center teal lighten-1">
             <i class="medium material-icons arrow">arrow_forward</i>
           </div>
         </div>
@@ -201,7 +201,6 @@ export default {
   height: 72px;
   width: 72px;
   border-radius: 50%;
-  background-color: rgb(14, 107, 59);
   text-align: center;
   line-height: 72px;
   justify-content: center;
