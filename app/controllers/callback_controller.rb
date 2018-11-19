@@ -9,7 +9,7 @@ class CallbackController < ApplicationController
     # hisotryモードでは正常に動作しなかったので当面はこれ
     if user.is_first
       user.update(is_first: false)
-      redirect_to '/#/tutorial'
+      redirect_to '/#/memos?tutorial=true'
     else
       redirect_to '/#/memos'
     end
