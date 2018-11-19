@@ -15,6 +15,12 @@
           </transition>
         </div>
 
+        <div class="carousel-item flex-center" href="#three!">
+          <transition name="base">
+            <tags class="tutorial-slide__content" href="#three!" v-if="isCenter(2)"></tags>
+          </transition>
+        </div>
+
         <router-link to="/memos">
           <div class="btn waves-light btn-large to-memo-button">今すぐメモ一覧へ</div>
         </router-link>
@@ -38,6 +44,7 @@
 <script>
 import BaseToot from './Tutorial/_base_toot'
 import BaseMemo from './Tutorial/_base_memo'
+import Tags from './Tutorial/_tags'
 
 export default {
   name: 'tutorial',
@@ -46,7 +53,7 @@ export default {
       // Tutorialの並び順と名前
       carouselElms: [],
       carouselInstance: Object(),
-      carouselElmsNum: 2,
+      carouselElmsNum: 3,
       isFirstContentLoad: true
     }
   },
@@ -94,6 +101,7 @@ export default {
   components: {
     BaseToot,
     BaseMemo,
+    Tags,
   }
 }
 </script>

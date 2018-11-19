@@ -4,62 +4,29 @@
       <div class="tutorial-title">
         Memodonを開いてメモを確認しよう!!
       </div>
+
       <div class="memos-area flex-center">
-        <div class="memo-area">
-          <div class="card orange lighten-3">
-            <div class="card-content black-text">
-              <div class="status-content">
-                <div>
-                  <p>#メモ <br />Memodonはいいぞ。</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="memo-area">
-          <div class="card orange lighten-3">
-            <div class="card-content black-text">
-              <div class="status-content">
-                <div>
-                  <p>#メモ <br />11/17は将棋の日</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="memo-area">
-          <div class="card orange lighten-3">
-            <div class="card-content black-text">
-              <div class="status-content">
-                <div>
-                  <p>#メモ <br />#Rails <br />Rails6で複数DB接続サポート</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="memo-area">
-          <div class="card orange lighten-3">
-            <div class="card-content black-text">
-              <div class="status-content">
-                <div>
-                  <p>#メモ <br />#4/16もくもく会オフ<br />焼き肉なう。</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <toot :toot="memo"  v-for="memo in memos"></toot>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import Toot from './_toot'
+
 export default {
   name: 'base_memo',
+  data () {
+    return {
+      memos: [
+              '#メモ <br />Memodonはいいぞ。',
+              '#メモ <br />11/17は将棋の日',
+              '#メモ <br />#Rails <br />Rails6で複数DB接続サポート',
+              '#メモ <br />#4/16もくもく会オフ<br />焼き肉なう。'
+             ]
+    }
+  },
   mounted () {
     const memos = document.querySelectorAll('.memo-area')
     let delay = 500
@@ -77,6 +44,9 @@ export default {
       })
       delay += 100
     })
+  },
+  components: {
+    Toot
   }
 }
 </script>
