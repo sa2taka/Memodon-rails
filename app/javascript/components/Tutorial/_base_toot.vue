@@ -1,6 +1,6 @@
 <template>
   <div id="base_toot">
-    <div class="tutorial-frame orange lighten">
+    <div class="tutorial-frame blue-grey darken-2">
       <div class="tutorial-title">
         ハッシュタグ「#メモ」をつけてTootしよう!!
       </div>

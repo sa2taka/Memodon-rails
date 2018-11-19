@@ -4,10 +4,10 @@
     <div v-else></div>
     <a class="btn btn-waves crawl-btn" @click="goToCrawl">新規メモを取得</a>
     <div class="switch bar-menu">
-      <a id="menu" class="waves-effect waves-light btn btn-floating orange darken-1 bar-menu__btn" @click="openMenu">
+      <a id="menu" class="waves-effect waves-light btn btn-floating pink darken-1 bar-menu__btn" @click="openMenu">
         <i class="material-icons">menu</i>
       </a>
-      <div class="tap-target orange darken-1 rotation" data-target="menu">
+      <div class="tap-target pink darken-1 rotation" data-target="menu">
         <div class="tap-target-content">
           <label class="column-switch  white-text">
             単独カラム
@@ -91,6 +91,7 @@ export default {
 
 .bar-menu {
   width: 90%;
+  left: 3%;
   position: fixed;
   z-index: 9999;
   bottom: 96px;

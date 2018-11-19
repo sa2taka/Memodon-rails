@@ -1,5 +1,5 @@
 <template>
-  <div id="tags">
+  <div id="tags" :class="[{ 'clear': isNotLoaded }]">
     <div class="title">最近呟いたタグ</div>
     <hr class="title-line" />
     <div class="tag-area">
@@ -32,6 +32,7 @@ export default {
   data () {
     return {
       tags: [],
+      isNotLoaded: true
     }
   },
   mounted () {
@@ -40,12 +41,9 @@ export default {
   computed: {
   },
   methods: {
-    get_tags: function () {
-      const self = this
-      axios.get('/api/tags', { })
-      .then(function(response) {
-        self.tags = response.data
-      })
+    get_tags: async function () {
+      this.tags = (await axios.get('/api/tags', { })).data
+      this.isNotLoaded = false
     },
   },
   components: {
@@ -55,6 +53,10 @@ export default {
 </script>
 
 <style>
+.clear {
+  display: none;
+}
+
 .tag-area {
   display: -webkit-box;
   display: -ms-flexbox;

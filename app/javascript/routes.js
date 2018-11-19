@@ -1,7 +1,6 @@
 import VueRouter from 'vue-router'
 import HomePage from './components/Home'
 import MemosPage from './components/Memos'
-import TutorialPage from './components/Tutorial'
 import TagsPage from './components/Tags'
 import ClawlingPage from './components/Crawling'
 
@@ -15,11 +14,6 @@ const routes = [{
     path: '/memos',
     name: 'memos',
     component: MemosPage
-  },
-  {
-    path: '/tutorial',
-    name: 'tutorial',
-    component: TutorialPage
   },
   {
     path: '/memos/tag/:tagname',
