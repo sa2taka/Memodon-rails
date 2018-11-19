@@ -91,6 +91,7 @@ export default {
 
 .bar-menu {
   width: 90%;
+  left: 3%;
   position: fixed;
   z-index: 9999;
   bottom: 96px;
